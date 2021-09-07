@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   resources :incidents, only: [:create, :index, :update]
   resources :ratings, only: [:create, :index]
+
+  get "/uikit", to: "pages#uikit"
 end

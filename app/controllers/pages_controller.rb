@@ -6,4 +6,8 @@ class PagesController < ApplicationController
 
   def navigation
   end
+
+  def uikit
+
+  end
 end
