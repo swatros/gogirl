@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Inputs</h2>
+  <h1>Welcome to Go Girl!</h1>
 
   <%= simple_form_for User.new do |f| %>
     <%= f.input :first_name, label: false, placeholder: "First Name", input_html: { class: "log-input"} %>
@@ -8,4 +8,10 @@
   <%= simple_form_for User.new do |f| %>
     <%= f.input :first_name, label: false, placeholder: "First Name", input_html: { class: "home-input-location"} %>
   <% end %>
+
+  <button class="button-blue">SIGN UP</button>
+  <button class="button-white">Start route</button>
+  <div class="col-5">
+    <button class="button-sos">SOS</button>
+  </div>
 </div>
