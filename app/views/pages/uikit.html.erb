@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Inputs</h2>
+
+  <%= simple_form_for User.new do |f| %>
+    <%= f.input :first_name, label: false, placeholder: "First Name", input_html: { class: "log-input"} %>
+  <% end %>
+
+  <%= simple_form_for User.new do |f| %>
+    <%= f.input :first_name, label: false, placeholder: "First Name", input_html: { class: "home-input-location"} %>
+  <% end %>
+</div>
