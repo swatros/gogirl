@@ -2,6 +2,7 @@
   "name": "gogirl",
   "private": true,
   "dependencies": {
+    "@iconify/iconify": "^2.0.4",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",

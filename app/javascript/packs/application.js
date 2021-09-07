@@ -24,6 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import Iconify from '@iconify/iconify';
 import { initAutocomplete } from '../plugins/init_autocomplete'
 
 // Internal imports, e.g:
