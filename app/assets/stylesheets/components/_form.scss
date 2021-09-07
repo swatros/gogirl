@@ -1,0 +1,31 @@
+.home-input-location {
+  background-color: white;
+  height: 54px;
+  width: 100%;
+  border-radius: 28px;
+  &:focus {
+    background: white; /*Dark Electric Blue*/
+    color: #66717E;
+    border: none;
+    box-shadow: none;
+  }
+
+}
+
+.log-input {
+  width: 100%;
+  background: #CBCECA; /* Light grey */
+  border-radius: 24px;
+  color: white;
+
+  &:focus {
+    background: #CBCECA; /* Light grey */
+    color: white;
+    border: none;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: white;
+  }
+}

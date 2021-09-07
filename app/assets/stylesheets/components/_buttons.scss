@@ -1,0 +1,67 @@
+/*All buttons set to width:100%, width will be control with divs*/
+
+.button-blue {
+  color: white;
+  width: 100%;
+  background-color: #9AABD5; /* Wild blue yonder */
+  border-radius: 33px;
+  padding:10px;
+  border:0px;
+}
+
+.button-white {
+  color: #66717E;
+  font-weight: bold;
+  width: 100%;
+  background-color: white; /* Wild blue yonder */
+  border-radius: 33px;
+  padding:10px;
+  border:0px;
+}
+.button-back {
+  width: 100%;
+  border-radius: 0px;
+}
+
+.button-sos {
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  width: 100%;
+  background-color: #B44143; /* Wild blue yonder */
+  border-radius: 33px;
+  padding:10px;
+  border:0px;
+}
+
+.button-im-home {
+  color: #29353D; /* Gunmetal gray */
+  background-color: white;
+  width: 100%;
+  border-radius: 22px;
+}
+
+.button-flag-homepage {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.button-flag {
+  height: 53px;
+  width: 53px;
+}
+
+.button-call {
+  height: 50px;
+  width: 50px;
+}
+
+.button-msg {
+  height: 55px;
+  width: 55px;
+}
+
+.button-ratings {
+  height: 51px;
+  width: 51px;
+}

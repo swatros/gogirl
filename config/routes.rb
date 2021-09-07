@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :ratings, only: [:create, :index]
 
   get "/navigation", to: "pages#navigation"
+  get "/uikit", to: "pages#uikit"
 end
