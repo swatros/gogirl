@@ -2,7 +2,7 @@
 <div class = "wrapper-home">
   <img class = "avatar-home" src = "https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80">
 
-  <%# Autocomplete imput forms and button %>
+  <%# Autocomplete input forms and button %>
   <div class="home-div-inputs">
     <form>
         <input class="home-input-location" id = "home-input-start" placeholder= "Start location">
@@ -11,9 +11,12 @@
     </form>
   </div>
 
+  <%# Pattern %>
   <%= image_tag "newmapdashedline.svg", class: "home-page-pattern" %>
+
+ <%# Flag card  %>
   <div class = "home-flag-card">
     <p> Flag an incident </p>
-    <%# Insert flag icon  %>
+    <span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;"></span>
   </div>
 </div>
