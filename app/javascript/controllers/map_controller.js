@@ -5,6 +5,16 @@ export default class extends Controller {
   static targets = ["map", "directions"]
 
   connect() {
+
+    // Step 0: define map origin, destination, and center:
+    var origin = JSON.parse(this.mapTarget.dataset.origin);
+    var destination = JSON.parse(this.mapTarget.dataset.destination);
+    var render = [
+      (origin[0] + destination[0]) * -5,
+      (origin[1] + destination[1]) / 2
+    ]
+    console.log(render);
+
     // Step 1: initialize communication with the platform
     var routeMapContainer = document.getElementById('map');
     this.platform = new H.service.Platform({
@@ -15,12 +25,12 @@ export default class extends Controller {
     //Step 2: initialize a map - this map is centered over Origin
     this.map = new H.Map(this.mapTarget,
       defaultLayers.vector.normal.map, {
-      center: { lat: 51.51326, lng: -0.0968752 },
-      zoom: 14,
+      center: { lat: render[0], lng: render[1] },
+      zoom: 1000,
       pixelRatio: window.devicePixelRatio || 1
-    });
+  });
     // add a resize listener to make sure that the map occupies the whole container
-    window.addEventListener('resize', () => this.map.getViewPort().resize());
+    // window.addEventListener('resize', () => this.map.getViewPort().resize());
 
     //Step 3: make the map interactive
     var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
@@ -29,8 +39,7 @@ export default class extends Controller {
     // var ui = H.ui.UI.createDefault(map, defaultLayers);
 
     // CALL OTHER MAP JS FUNCTIONS, AS DEFINED BELOW:
-    var origin = JSON.parse(this.mapTarget.dataset.origin);
-    var destination = JSON.parse(this.mapTarget.dataset.destination);
+
     this.generateRoute({lat: origin[0], lng: origin[1]}, { lat: destination[0], lng: destination[1]});
 
   }
@@ -69,7 +78,7 @@ export default class extends Controller {
 
       this.map.addObject(polyline);
       this.map.getViewModel().setLookAtData({
-        bounds: polyline.getBoundingBox()
+        bounds: new H.geo.Rect(origin[0], origin[1], destination[0], destination[1])
       });
     });
   }
