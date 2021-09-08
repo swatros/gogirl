@@ -1,1 +1,67 @@
-// Specific CSS for your home-page
+.wrapper-home {
+  padding-top: 100px;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #29353D !important;
+}
+
+//input fields for start location and destination
+
+.home-div-inputs {
+  padding-top: 20px;
+  width: 84vw;
+  margin: auto;
+}
+
+.home-div-inputs .button-blue {
+  margin-top: 10px;
+  width: 41%;
+  font-size: 14px;
+  padding: 17px;
+}
+
+.home-div-inputs .home-input-location {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.home-input-location {
+  padding-left: 24px;
+
+  &::placeholder {
+    color: rgb(165, 165, 165);
+  }
+}
+
+// 'flag an incident' card
+
+.home-flag-card {
+  background-color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  width: 46vw;
+  box-shadow: 1px 1px 1px lightgray;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  padding-left: 32px;
+  padding-right: 17px;
+}
+
+.home-flag-card p {
+  color: #29353D;
+  margin-bottom: 0;
+  font-size: 15px;
+  text-align: left;
+}
+
+// zig zag pattern
+.home-page-pattern {
+  width: 100%;
+  padding: 20px;
+  padding-top: 0px;
+}
