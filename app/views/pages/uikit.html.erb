@@ -27,4 +27,11 @@
   <span class="iconify button-ratings crowd" data-icon="raphael:people" style="color: #29353d;"></span>
 
   <a href="tel:627841248">Call</a>
-</div>
+  <ul>
+    <% current_user.contacts do |contact| %>
+      <li>
+        <%= contact.phone_number %>
+      </li>
+    <% end %>
+  </ul>
+  </div>
