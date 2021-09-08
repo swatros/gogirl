@@ -5,54 +5,89 @@
 
   .navigation-pane-div {
     width: 100%;
-    height: 80vh;
+    height: 90vh;
     position: relative;
   }
 
-  .back-button {
+  // back button
+  .nav-back-button-div .fa-chevron-circle-left {
     position: absolute;
     z-index: 5;
-    top: 5%;
+    top: 3%;
     left: 5%;
-    background-color: blue;
-    color: white;
+    color: #29353D;
     border-radius: 50%;
-    height: 50px;
-    width: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 10vw;
   }
 
-  .right-buttons {
+  .nav-back-button-div .fa-circle {
+    position: absolute;
+    z-index: 4;
+    top: 3%;
+    left: 5%;
+    color: white;
+    border-radius: 50%;
+    font-size: 10vw;
+  }
+
+ //buttons on right side
+
+  .nav-right-buttons-div li {
+    list-style: none;
+    font-size: 12vw;
+    line-height: 63px;
+  }
+
+  .nav-right-buttons-div .fa-circle {
+    color: white;
+  }
+
+  .nav-right-icons-list {
     position: absolute;
     z-index: 5;
-    bottom: 5%;
-    right: 5%;
+    bottom: 19%;
+    right: 7%;
   }
 
-  .right-buttons li {
-    list-style: none;
-    background-color: blue;
-    color: white;
-    margin: 8px 0px;
-    cursor: pointer;
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
+  .nav-right-circles-list {
+    position: absolute;
+    z-index: 4;
+    bottom: 18%;
+    right: 8%;
+  }
+
+  //bottom menu pane
+  .nav-bottom-menu-div {
+    background-color: #29353D;
+    border-radius: 9px 9px 0px 0px;
+    height: 19vh;
+    width: 100vw;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    z-index: 5;
+  }
+
+  .nav-bottom-toggle {
+    padding-left: 45%;
+  }
+
+  .nav-bottom-buttons-div {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    margin-top: 2vh;
+    padding: 2vh;
+    padding-top: 0;
   }
 
-  .bottom-menu {
-  height: 18vh;
-  background-color: blue;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
+  .nav-bottom-buttons-div .button-white {
+    width: 42vw;
+    height: 60px;
+  }
 
+  .nav-bottom-buttons-div .button-sos {
+    width: 42vw;
+    height: 60px;
+  }
 }
