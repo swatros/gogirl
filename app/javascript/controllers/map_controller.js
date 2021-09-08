@@ -7,13 +7,8 @@ export default class extends Controller {
   connect() {
 
     // Step 0: define map origin, destination, and center:
-    var origin = JSON.parse(this.mapTarget.dataset.origin);
-    var destination = JSON.parse(this.mapTarget.dataset.destination);
-    var render = [
-      (origin[0] + destination[0]) * -5,
-      (origin[1] + destination[1]) / 2
-    ]
-    console.log(render);
+    this.origin = JSON.parse(this.mapTarget.dataset.origin);
+    this.destination = JSON.parse(this.mapTarget.dataset.destination);
 
     // Step 1: initialize communication with the platform
     var routeMapContainer = document.getElementById('map');
@@ -25,12 +20,10 @@ export default class extends Controller {
     //Step 2: initialize a map - this map is centered over Origin
     this.map = new H.Map(this.mapTarget,
       defaultLayers.vector.normal.map, {
-      center: { lat: render[0], lng: render[1] },
-      zoom: 1000,
+      padding: {top: 24, right: 24, bottom: 24, left: 24},
       pixelRatio: window.devicePixelRatio || 1
   });
-    // add a resize listener to make sure that the map occupies the whole container
-    // window.addEventListener('resize', () => this.map.getViewPort().resize());
+
 
     //Step 3: make the map interactive
     var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
@@ -40,7 +33,7 @@ export default class extends Controller {
 
     // CALL OTHER MAP JS FUNCTIONS, AS DEFINED BELOW:
 
-    this.generateRoute({lat: origin[0], lng: origin[1]}, { lat: destination[0], lng: destination[1]});
+    this.generateRoute({lat: this.origin[0], lng: this.origin[1]}, { lat: this.destination[0], lng: this.destination[1]});
 
   }
 
@@ -55,7 +48,6 @@ export default class extends Controller {
         };
 
       const onSuccess = (result) => {
-        console.log(result.routes.length)
         if (result.routes.length) {
           this.drawRoute(result.routes[0])
         }
@@ -77,8 +69,9 @@ export default class extends Controller {
       });
 
       this.map.addObject(polyline);
+
       this.map.getViewModel().setLookAtData({
-        bounds: new H.geo.Rect(origin[0], origin[1], destination[0], destination[1])
+        bounds: polyline.getBoundingBox()
       });
     });
   }
