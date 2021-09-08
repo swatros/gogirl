@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :contacts, dependent: :destroy
   has_many :ratings, dependent: :nullify
   has_many :incidents, dependent: :nullify
+
+  accepts_nested_attributes_for :contacts
 end

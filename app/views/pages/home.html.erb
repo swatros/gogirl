@@ -1,7 +1,10 @@
 
 <div class = "wrapper-home">
-  <img class = "avatar-home" src = "https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80">
-
+  <%= image_tag "https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80", class: "avatar dropdown-toggle avatar-home", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+    <%= link_to "My profile",  edit_user_registration_path, class: "dropdown-item" %>
+    <%= link_to "Log out",   destroy_user_session_path, class: "dropdown-item" %>
+  </div>
   <%# Autocomplete input forms and button %>
   <div class="home-div-inputs">
     <form>
