@@ -1,0 +1,9 @@
+<div class="container my-3">
+  <h1>Emergency contacts</h1>
+</div>
+
+<% current_user.contacts.each do |contact| %>
+
+  <a href="tel:<%= contact.phone_number %>"> <button class="emergency-contact-button"><%= contact.first_name.capitalize %> <%= contact.last_name.capitalize %></button></a>
+</button>
+<% end %>
