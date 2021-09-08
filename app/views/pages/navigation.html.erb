@@ -1,7 +1,16 @@
 <div class="map-wrapper">
-  <%= render 'shared/navigation_back_button' %>
-  <%= render 'shared/navigation_right_buttons' %>
-  <img class="navigation-map" src="https://i.stack.imgur.com/jl8Kq.jpg" alt="map">
-</div>
+  <div class = "navigation-back-buttons-div">
+    <%= render 'shared/navigation_back_button' %>
+  </div>
+  <div class = "navigation-right-buttons-div">
+    <%= render 'shared/navigation_right_buttons' %>
+  </div>
 
-<%= render 'shared/navigation_bottom_menu' %>
+  <div class = "navigation-pane-div">
+    <%= render 'shared/navigation_pane' %>
+  </div>
+
+  <div class = "navigation-bottom-menu-div">
+    <%= render 'shared/navigation_bottom_menu' %>
+  </div>
+</div>

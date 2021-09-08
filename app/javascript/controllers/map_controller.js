@@ -16,7 +16,7 @@ export default class extends Controller {
     this.map = new H.Map(this.mapTarget,
       defaultLayers.vector.normal.map, {
       center: { lat: 51.51326, lng: -0.0968752 },
-      zoom: 13,
+      zoom: 14,
       pixelRatio: window.devicePixelRatio || 1
     });
     // add a resize listener to make sure that the map occupies the whole container
@@ -29,7 +29,9 @@ export default class extends Controller {
     // var ui = H.ui.UI.createDefault(map, defaultLayers);
 
     // CALL OTHER MAP JS FUNCTIONS, AS DEFINED BELOW:
-    this.generateRoute({ lat: 51.51326, lng: -0.0968752 }, { lat: 51.5081, lng: -0.0985 });
+    var origin = JSON.parse(this.mapTarget.dataset.origin);
+    var destination = JSON.parse(this.mapTarget.dataset.destination);
+    this.generateRoute({lat: origin[0], lng: origin[1]}, { lat: destination[0], lng: destination[1]});
 
   }
 
