@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Welcome to Go Girl!</h1>
+
+  <%= simple_form_for User.new do |f| %>
+    <%= f.input :first_name, label: false, placeholder: "First Name", input_html: { class: "log-input"} %>
+  <% end %>
+
+  <%= simple_form_for User.new do |f| %>
+    <%= f.input :first_name, label: false, placeholder: "First Name", input_html: { class: "home-input-location"} %>
+  <% end %>
+
+  <button class="button-blue">SIGN UP</button>
+  <button class="button-white">Start route</button>
+  <div class="col-5">
+    <button class="button-sos">SOS</button>
+  </div>
+
+  <!-- Phone -->
+  <span class="button-cal" data-icon="el:phone-alt" style="color: #29353D;"></span>
+  <!-- Message -->
+  <span class="button-msg" data-icon="bpmn:start-event-message" style="color:#29353D;"></span>
+  <!-- Flag -->
+  <span class="button-flag" data-icon="el:flag-alt" style="color: #b44143;"></span>
+  <!-- Light -->
+  <span class="button-ratings light" data-icon="emojione:light-bulb" style="color: #b44143;"></span>
+  <!-- Crowd -->
+  <span class="button-ratings crowd" data-icon="raphael:people" style="color: #29353d;"></span>
+</div>

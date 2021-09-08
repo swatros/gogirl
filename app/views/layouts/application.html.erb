@@ -16,12 +16,11 @@
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"/>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
     <%= yield %>
   </body>
 </html>
