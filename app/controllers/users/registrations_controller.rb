@@ -12,14 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     respond_with self.resource
   end
 
-  # GET /users/edit
-  def edit
-    # Override Devise default behaviour and create a contact as well
-    build_resource({})
-    resource.contacts.build
-    respond_with self.resource
-  end
-
   protected
 
   def configure_permitted_parameters
