@@ -2,23 +2,25 @@ class IncidentsController < ApplicationController
 
   def create
     @journey = Journey.find_by(id: params[:journey_id])
+    @incident = Incident.new(incident_params)
 
     if @journey
-      @incident = Incident.new(date: Date.today, time: Time.now)
+      @incident.date = Date.today
+      @incident.time = Time.now
+
       @incident.journey = @journey
       @incident.user = @journey.user
     else
-      @incident = Incident.new(incident_params)
       @incident.user = current_user
     end
 
     respond_to do |format|
       if @incident.save
         format.html { redirect_to root_path } #change to redirect to survey
-        format.json { head 200 }
+        format.text { render partial: 'shared/incident_flash', locals: { message: "Location and time saved. We'll ask for more info later." }, formats: [:html] }
       else
         format.html { redirect_to root_path } #change to redirect to same page with an error
-        format.json { head 422 }
+        format.text { head 422 }
       end
     end
   end
@@ -26,6 +28,6 @@ class IncidentsController < ApplicationController
   private
 
   def incident_params
-    params.require(:incident).permit(:date, :time)
+    params.require(:incident).permit(:date, :time, :latitude, :longitude)
   end
 end
