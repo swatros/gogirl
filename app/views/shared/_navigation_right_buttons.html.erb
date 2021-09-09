@@ -1,8 +1,13 @@
 <div class="nav-right-buttons-div">
   <ul class = "nav-right-icons-list">
-  <li><span class="iconify button-cal" data-icon="el:phone-alt" style="color: #29353D;"></span></li>
+  <%= link_to calling_path do %>
+    <li><span class="iconify button-call" data-icon="el:phone-alt" style="color: #29353D;"></span></li>
+  <% end  %>
+
   <li><span class="iconify button-msg" data-icon="bpmn:start-event-message" style="color:#29353D;"></span></li>
-  <li><span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;"></span></li>
+
+  <%# flag normal %>
+  <li><span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;" data-action="click->navigation-ui#flag"></span></li>
   </ul>
 
   <ul class = "nav-right-circles-list">
