@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :contacts, only: [:create, :update, :destroy]
   end
 
-  resources :incidents, only: [:create, :index, :update]
+  resources :incidents, only: [:create, :index, :edit, :update]
   resources :ratings, only: [:create, :index]
 
   get "/calling", to: "pages#calling"

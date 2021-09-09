@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   def navigation
     @origin = Geocoder.search(params[:origin]).first.coordinates.to_json
     @destination = Geocoder.search(params[:destination]).first.coordinates.to_json
+    @journey = Journey.new
   end
 
   def uikit
