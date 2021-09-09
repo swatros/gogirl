@@ -1,18 +1,35 @@
 .survey {
-  padding: 16px;
+  padding: 16px 24px;
+  font-family: roboto, sans-serif;
+}
+
+.survey h1 {
+  font-weight: bold;
+  font-family: roboto, sans-serif;
+  font-size: 28px;
 }
 
 .survey .head-message {
   padding-left: 8px;
 }
 
+.survey .head-message p {
+  color: #66717E;
+}
+
 .survey-form h3 {
   border-bottom: 1px solid black;
   padding-left: 8px;
+  padding-top: 8px;
+  font-family: roboto, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #29353D;
 }
 
 .survey-form p {
   padding-left: 8px;
+  color: #66717E;
 }
 
 .survey .custom-field {
@@ -21,4 +38,43 @@
 
 .survey .custom-submit {
   margin: 24px 0px;
+  width: 100%;
+  border-radius: 25px;
+  background-color: #9AABD5;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 16px 0px;
+}
+
+.title-exitbtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-inputs {
+  border-radius: 25px;
+  border-color: #66717E !important;
+  background-image: none !important;
+  text-align: center;
+  color: #66717E;
+}
+
+.custom-date {
+  width: auto;
+  height: auto;
+  padding: 8px 24px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-overflow: '';
+  text-align-last: center;
+}
+
+.time-wrapper > div{
+  justify-content: flex-start !important;
+}
+
+.no-paragraph {
+  padding-top: 8px !important;
 }

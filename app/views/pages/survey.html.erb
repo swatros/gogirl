@@ -1,37 +1,38 @@
 <div class="survey container">
   <div class="head-message">
-    <h1>How was your trip?</h1>
-    <p>If you feel comfortable, please complete this optional survey to help us get other users home safely.</p>
-    <p> Your data will be collected anonymously, but it will be displayed on the map so other users know which areas to avoid.</p>
+    <div class="title-exitbtn">
+      <h1>How was your trip?</h1>
+      <i class="fas fa-times-circle" style="font-size: 25px; margin-bottom: 8px;"></i>
+    </div>
+    <p>If you feel comfortable, please complete this optional survey to help us get other users home safely. <br>Your data will be collected anonymously, but it will be displayed on the map so other users know which areas to avoid.</p>
   </div>
   <%= simple_form_for @incident do |f| %>
     <div class="survey-form">
       <div class="custom-field">
       <h3>Where did it happen?</h3>
-      <%= f.input :location, label: false %>
+      <%= f.input :location, label: false, input_html: {class: "form-inputs"},
+      wrapper_html: {class: "no-paragraph" } %>
       </div>
       <div class="custom-field">
         <h3>What date did it happen on?</h3>
-        <%= f.input :date, label: false %>
+        <%= f.input :date, label: false, input_html: {class: "form-inputs custom-date"}, wrapper_html: {class: "time-wrapper no-paragraph"} %>
       </div class="custom-field">
       <div>
         <h3>What time did it happen at?</h3>
         <p>If you aren’t sure, choose the nearest estimate.</p>
-        <%= f.input :time, label: false %>
+        <%= f.input :time, label: false, input_html: {class: "form-inputs custom-date"}, wrapper_html: {class: "time-wrapper"} %>
       </div>
       <div class="custom-field">
         <h3>What was the nature of the incident?</h3>
         <p>Select all the categories that apply. If none apply, choose the closest category.</p>
-        <%= f.input :crime, collection: ["Catcalling", "Harrassing", "Robbery"], label: false %>
-      </div>
-      <div class="custom-submit">
-        <%= f.submit 'Submit my survey response' %>
+        <%= f.input :crime, collection: ["Catcalling", "Harrassing", "Robbery"], label: false, input_html: {class: "form-inputs"} %>
       </div>
       <div class="custom-field">
         <h3>Additional description:</h3>
         <p>If you have any other information that you want to share, please feel free to write it here. Ie, what did the person look like?  </p>
-        <%= f.input :description, as: :text, input_html: {rows: 5}, label: false %>
+        <%= f.input :description, as: :text, input_html: {rows: 5, class: "form-inputs"}, label: false %>
       </div>
+      <%= f.submit 'Submit my survey response', class: "custom-submit" %>
     </div>
   <% end %>
 </div>
