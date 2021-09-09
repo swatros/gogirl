@@ -25,6 +25,8 @@ gem 'redis', '~> 4.0'
 # Use geocoder
 gem 'geocoder'
 
+# Use Twilio
+gem 'twilio-ruby'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

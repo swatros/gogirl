@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :incidents, only: [:create, :index, :update]
   resources :ratings, only: [:create, :index]
 
+  resources :messages, only: :create
+
+  get "/splash", to: "pages#splash"
   get "/calling", to: "pages#calling"
   get "/navigation", to: "pages#navigation"
   get "/uikit", to: "pages#uikit"
