@@ -1,0 +1,20 @@
+.emergency-list {
+  a {
+    text-decoration:none;
+  }
+}
+
+.emergency-contact-button {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  background-color: lightgray;
+  a {
+    text-decoration: none;
+  }
+  border:none;
+}
+
+.emergency-contact-button:active {
+  background-color: gray;
+}

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :incidents, only: [:create, :index, :update]
   resources :ratings, only: [:create, :index]
 
+  get "/calling", to: "pages#calling"
   get "/navigation", to: "pages#navigation"
   get "/uikit", to: "pages#uikit"
 end
