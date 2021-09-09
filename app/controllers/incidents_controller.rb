@@ -1,22 +1,31 @@
 class IncidentsController < ApplicationController
 
   def create
-    @user = current_user
-    @incident = Incident.new(incident_params)
-    @incident.user = @user
+    @journey = Journey.find_by(id: params[:journey_id])
 
     if @journey
-      @journey = Journey.find(params[:journey_id])
+      @incident = Incident.new(date: Date.today, time: Time.now)
       @incident.journey = @journey
+      @incident.user = @journey.user
+    else
+      @incident = Incident.new(incident_params)
+      @incident.user = current_user
     end
 
-    if @incident.save
-      # has to stay on same page?
-      redirect_to navigation_path(@journey)
-      flash[:notice] = "Location and time saved. We'll ask for more info later."
-    else
-      redirect_back fallback_location: navigation_path(@journey)
-      flash[:alert] = @incident.errors.full_messages.join(", ").capitalize
+    respond_to do |format|
+      if @incident.save
+        format.html { redirect_to root_path } #change to redirect to survey
+        format.json { head 200 }
+      else
+        format.html { redirect_to root_path } #change to redirect to same page with an error
+        format.json { head 422 }
+      end
     end
+  end
+
+  private
+
+  def incident_params
+    params.require(:incident).permit(:date, :time)
   end
 end
