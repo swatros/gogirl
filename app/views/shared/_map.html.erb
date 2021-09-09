@@ -2,6 +2,8 @@
 <div id="map" class = "h-100"
   data-map-target="map"
   data-origin = "<%= @origin.to_json %>"
+  data-incidents = "<%= @incidents.to_json %>"
+  data-avoid = "<%= @incidents_avoid %>"
   data-destination = "<%= @destination.to_json %>"
   data-here-api-key="<%= ENV['HERE_API_KEY'] %>">
 </div>
