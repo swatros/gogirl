@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   get "/navigation", to: "pages#navigation"
   get "/uikit", to: "pages#uikit"
+  get "/survey", to: "pages#survey"
 end
