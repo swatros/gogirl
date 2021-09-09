@@ -4,5 +4,5 @@ class Incident < ApplicationRecord
   belongs_to :journey, optional: true
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
-  validates :crime, inclusion: {in: CRIME_TYPES}
+  # validates :crime, inclusion: {in: CRIME_TYPES} # ADD REQUIRE:TRUE TO SIMPLE FORM ON SURVEY
 end

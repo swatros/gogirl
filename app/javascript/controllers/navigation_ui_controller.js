@@ -14,20 +14,24 @@ export default class extends Controller {
   flag() {
     this.getCurrentLocation(
       (response) => {
-        console.log(response)
+        console.log(response.coords.latitude)
+        console.log(response.coords.longitude)
         fetch("/incidents", {
           method: 'Post',
           headers: {
             "Content-Type": "application/json",
-            'Accept': "application/json", 'X-CSRF-Token': csrfToken()},
+            'Accept': "text/plain", 'X-CSRF-Token': csrfToken()},
           body: JSON.stringify({
-            journey_id: this.journeyId
+            journey_id: this.journeyId,
+            incident: {
+              latitude: response.coords.latitude,
+              longitude: response.coords.longitude,
+            }
           })
         })
-          .then(response => {
-            if (response.status === 200) {
-              console.log("Location and time saved. We'll ask for more info later.")
-            }
+          .then(response => response.text())
+          .then((data) => {
+            document.querySelector('body').insertAdjacentHTML('beforeend', data);
           })
       }
     )
