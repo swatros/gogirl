@@ -14,4 +14,8 @@ class PagesController < ApplicationController
   def uikit
 
   end
+
+  def survey
+    @incident = Incident.last
+  end
 end
