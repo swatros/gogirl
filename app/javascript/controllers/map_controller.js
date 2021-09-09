@@ -1,3 +1,4 @@
+import H from "@here/maps-api-for-javascript";
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -6,9 +7,11 @@ export default class extends Controller {
 
   connect() {
 
-    // Step 0: define map origin, destination, and center:
+    // Step 0: define map origin, destination, and areas to avoid:
     this.origin = JSON.parse(this.mapTarget.dataset.origin);
     this.destination = JSON.parse(this.mapTarget.dataset.destination);
+    this.incidents = JSON.parse(this.mapTarget.dataset.incidents);
+    this.avoidIncidents = this.mapTarget.dataset.avoid;
 
     // Step 1: initialize communication with the platform
     var routeMapContainer = document.getElementById('map');
@@ -17,33 +20,29 @@ export default class extends Controller {
     });
     var defaultLayers = this.platform.createDefaultLayers();
 
-    //Step 2: initialize a map - this map is centered over Origin
+    //Step 2: initialize a map
     this.map = new H.Map(this.mapTarget,
       defaultLayers.vector.normal.map, {
-      padding: {top: 24, right: 24, bottom: 24, left: 24},
+      padding: {top: 24, right: 60, bottom: 60, left: 60},
       pixelRatio: window.devicePixelRatio || 1
   });
-
 
     //Step 3: make the map interactive
     var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
 
-    // Disabled all default map UI (zoom buttons, scale, traffic layers)
-    // var ui = H.ui.UI.createDefault(map, defaultLayers);
-
     // CALL OTHER MAP JS FUNCTIONS, AS DEFINED BELOW:
-
     this.generateRoute({lat: this.origin[0], lng: this.origin[1]}, { lat: this.destination[0], lng: this.destination[1]});
-
   }
 
   generateRoute(origin, destination) {
+
     var router = this.platform.getRoutingService(null, 8),
       routeRequestParams = {
         routingMode: 'fast',
         transportMode: 'pedestrian',
         origin: `${origin.lat},${origin.lng}`,
         destination: `${destination.lat},${destination.lng}`,
+        'avoid[areas]': this.avoidIncidents,
         return: 'polyline,turnByTurnActions,actions,instructions,travelSummary'
         };
 
@@ -54,7 +53,6 @@ export default class extends Controller {
       }
 
       router.calculateRoute(routeRequestParams, onSuccess);
-
   }
 
   drawRoute(route) {
@@ -68,11 +66,56 @@ export default class extends Controller {
         }
       });
 
+      console.log(route.sections);
+
       this.map.addObject(polyline);
+
+      var destinationIcon = new H.map.Icon('https://img.icons8.com/material-sharp/60/000000/order-delivered.png', { size: { w: 50, h: 50 } });
+      var originIcon = new H.map.Icon('https://img.icons8.com/external-those-icons-fill-those-icons/48/000000/external-pin-maps-and-locations-those-icons-fill-those-icons.png', { size: { w: 40, h: 40 } });
+      var flagIcon = new H.map.Icon('https://img.icons8.com/color/30/000000/high-importance--v1.png', { size: { w: 20, h: 20 } });
+
+
+      function addMarkersToMap(map, incidents) {
+        var destinationMarker = new H.map.Marker(
+          {
+            lat: route.sections[0].arrival.place.location.lat,
+            lng: route.sections[0].arrival.place.location.lng
+          },
+          {
+            icon: destinationIcon
+          }
+        );
+        map.addObject(destinationMarker);
+
+        var originMarker = new H.map.Marker(
+          {
+            lat: route.sections[0].departure.place.location.lat,
+            lng: route.sections[0].departure.place.location.lng
+          },
+          {
+            icon: originIcon
+          }
+        );
+        map.addObject(originMarker);
+
+        incidents.forEach((incident) => {
+          var incidentMarker = new H.map.Marker({
+            lat: incident.lat,
+            lng: incident.lng
+          },
+          {
+            icon: flagIcon
+          })
+          map.addObject(incidentMarker)
+        })
+    }
+
+      addMarkersToMap(this.map, this.incidents);
 
       this.map.getViewModel().setLookAtData({
         bounds: polyline.getBoundingBox()
       });
+
     });
   }
 }
