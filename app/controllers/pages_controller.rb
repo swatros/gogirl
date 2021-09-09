@@ -9,4 +9,10 @@ class PagesController < ApplicationController
     @journey = Journey.create(user: current_user, origin_address: params[:origin], destination_address: params[:destination])
   end
 
+  def uikit
+  end
+
+  def survey
+    @incident = Incident.last
+  end
 end
