@@ -1,5 +1,10 @@
 class IncidentsController < ApplicationController
 
+
+  def index
+    @incidents = Incident.where(journey_id: params(:journey_id))
+  end
+
   def create
     @journey = Journey.find_by(id: params[:journey_id])
     @incident = Incident.new(incident_params)
@@ -7,7 +12,6 @@ class IncidentsController < ApplicationController
     if @journey
       @incident.date = Date.today
       @incident.time = Time.now
-
       @incident.journey = @journey
       @incident.user = @journey.user
     else

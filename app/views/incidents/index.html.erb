@@ -1,0 +1,20 @@
+<%# Should only go on this page IF incident flagged. Put if else on I'm home button %>
+
+<div class = 'incident-index-headers'>
+  <h1> Review the incidents you flagged this journey </h1>
+  <p> Please click edit to add more details to your report - the incident will only be saved to our map once you do this. </p>
+</div>
+
+<div class = 'exit button'>
+  <%# Cross button icon %>
+</div>
+
+<% @incidents.each do |incident| %>
+  <div class = "incident-card">
+  <%# Flag icon %>
+  <%# Edit %>
+  <p> Incident reported at: </p>
+  <p> Location: <%= incident.location %> </p>
+  <p> Time: <% incident.time %> </p>
+  </div>
+<% end %>

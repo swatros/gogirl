@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     resources :contacts, only: [:create, :update, :destroy]
   end
 
-  resources :incidents, only: [:create, :index, :edit, :update]
+  resources :incidents, only: [:create, :edit, :update]
+
+  resources :journey do
+    resources :incidents, only: [:index, :edit, :update]
+  end
+
   resources :ratings, only: [:create, :index]
 
   resources :messages, only: :create
