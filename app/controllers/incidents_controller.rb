@@ -1,8 +1,12 @@
 class IncidentsController < ApplicationController
 
-
   def index
-    @incidents = Incident.where(journey_id: params(:journey_id))
+    @journey = Journey.find(params[:journey_id])
+    @incidents = @journey.incidents
+  end
+
+  def new
+    @incident = Incident.new
   end
 
   def create
@@ -29,9 +33,24 @@ class IncidentsController < ApplicationController
     end
   end
 
+  def edit
+    @incident = Incident.find(params[:id])
+  end
+
+  def update
+    @incident = Incident.find(params[:id])
+    @incident.update(incident_params)
+
+    if @incident.save
+      redirect_to survey_success_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def incident_params
-    params.require(:incident).permit(:date, :time, :latitude, :longitude)
+    params.require(:incident).permit(:date, :time, :latitude, :longitude, :location, :crime, :description)
   end
 end

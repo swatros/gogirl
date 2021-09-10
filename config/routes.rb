@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     resources :contacts, only: [:create, :update, :destroy]
   end
 
-  resources :incidents, only: [:create, :edit, :update]
+  resources :incidents, only: [:new, :create, :edit, :update]
 
-  resources :journey do
+  resources :journeys, only:[:create, :show] do
     resources :incidents, only: [:index, :edit, :update]
   end
 
@@ -21,6 +21,5 @@ Rails.application.routes.draw do
   get "/calling", to: "pages#calling"
   get "/navigation", to: "pages#navigation"
   get "/uikit", to: "pages#uikit"
-  get "/survey", to: "pages#survey"
   get "/survey_success", to: "pages#survey_success"
 end

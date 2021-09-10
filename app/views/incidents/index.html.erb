@@ -1,20 +1,33 @@
 <%# Should only go on this page IF incident flagged. Put if else on I'm home button %>
 
-<div class = 'incident-index-headers'>
-  <h1> Review the incidents you flagged this journey </h1>
-  <p> Please click edit to add more details to your report - the incident will only be saved to our map once you do this. </p>
-</div>
-
-<div class = 'exit button'>
-  <%# Cross button icon %>
-</div>
-
-<% @incidents.each do |incident| %>
-  <div class = "incident-card">
-  <%# Flag icon %>
-  <%# Edit %>
-  <p> Incident reported at: </p>
-  <p> Location: <%= incident.location %> </p>
-  <p> Time: <% incident.time %> </p>
+<div class = "incidents-index-wrapper">
+  <div class = 'incident-index-headers'>
+    <h1> Flagged incidents </h1>
+    <p> Please click edit to add information about the incidents you flagged this journey - your data will only be used on our map if you complete this step. </p>
   </div>
-<% end %>
+
+  <%= link_to root_path do %>
+    <div class = 'incident-index-exit-button'>
+      <%# Cross button icon %>
+      <i class="fas fa-times-circle" style="font-size: 25px; margin-bottom: 8px;"></i>
+    </div>
+  <% end %>
+
+  <% @incidents.each do |incident| %>
+    <div class = "incident-card">
+    <%# Flag icon %>
+      <div class = "index-card-title-and-flag">
+        <span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;"></span>
+        <h2> Incident reported at: </h2>
+      </div>
+      <div class = "index-card-content">
+        <p><strong> Location: </strong> <%= incident.location %> </p>
+        <p><strong> Time: </strong> <%= incident.time.strftime("%l:%M%p") %> </p>
+      </div>
+      <%# Edit button %>
+      <%= link_to edit_incident_path(incident) do %>
+      <button class="button-blue incident-index-edit-button">Edit</button>
+      <% end %>
+    </div>
+  <% end %>
+</div>
