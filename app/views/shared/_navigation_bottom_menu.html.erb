@@ -4,7 +4,9 @@
   </div>
 
   <div class = "nav-bottom-buttons-div">
-    <button class="button-white">I'm home</button>
+    <%= link_to journey_incidents_path(@journey) do %>
+      <button class="button-white">I'm home</button>
+    <% end %>
     <button class="button-sos">911</button>
   </div>
 </div>

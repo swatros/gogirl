@@ -9,23 +9,9 @@
   <%= simple_form_for @incident do |f| %>
     <div class="survey-form">
       <div class="custom-field">
-      <h3>Where did it happen?</h3>
-      <%= f.input :location, label: false, input_html: {class: "form-inputs"},
-      wrapper_html: {class: "no-paragraph" } %>
-      </div>
-      <div class="custom-field">
-        <h3>What date did it happen on?</h3>
-        <%= f.input :date, label: false, input_html: {class: "form-inputs custom-date"}, wrapper_html: {class: "time-wrapper no-paragraph"} %>
-      </div class="custom-field">
-      <div>
-        <h3>What time did it happen at?</h3>
-        <p>If you aren’t sure, choose the nearest estimate.</p>
-        <%= f.input :time, label: false, input_html: {class: "form-inputs custom-date"}, wrapper_html: {class: "time-wrapper"} %>
-      </div>
-      <div class="custom-field">
         <h3>What was the nature of the incident?</h3>
         <p>Select all the categories that apply. If none apply, choose the closest category.</p>
-        <%= f.input :crime, collection: ["Catcalling", "Harrassing", "Robbery"], label: false, input_html: {class: "form-inputs"} %>
+        <%= f.input :crime, collection: ["catcalling", "theft", "sexual assault", "stalking"], label: false, input_html: {class: "form-inputs"} %>
       </div>
       <div class="custom-field">
         <h3>Additional description:</h3>
