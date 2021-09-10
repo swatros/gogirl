@@ -41,6 +41,7 @@ export default class extends Controller {
       routeRequestParams = {
         routingMode: 'fast',
         transportMode: 'pedestrian',
+        'pedestrian[speed]': 1.4,
         origin: `${origin.lat},${origin.lng}`,
         destination: `${destination.lat},${destination.lng}`,
         'avoid[areas]': this.avoidIncidents,
@@ -59,13 +60,22 @@ export default class extends Controller {
 
   summarizeRoute(route) {
     let eta = new Date(route.sections[0].arrival.time);
-    let distanceToGo = (route.sections[0].travelSummary.length / 1000).toFixed(1)
+    let distanceToGo = (route.sections[0].travelSummary.length / 1000).toFixed(1);
+    console.log()
 
     let etaHolder = document.getElementById('eta');
-    etaHolder.insertAdjacentHTML('beforeend', `${eta.getHours()}:${eta.getMinutes()}`);
+
+    let etaMinutes = ""
+    if (eta.getMinutes() > 9) {
+      etaMinutes = eta.getMinutes()
+    } else {
+      etaMinutes = `0${eta.getMinutes()}`
+    }
+
+    etaHolder.innerHTML = `${eta.getHours()}:${etaMinutes}`;
 
     let distanceHolder = document.getElementById('distance');
-    distanceHolder.insertAdjacentHTML('beforeend', `${distanceToGo} km`);
+    distanceHolder.innerHTML = `${distanceToGo} km`;
 
     // let totalTime = eta - Date.now()
     // console.log(totalTime)

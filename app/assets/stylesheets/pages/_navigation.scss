@@ -38,7 +38,7 @@
     right: 5%;
     background-color: rgba(#29353D, .7);
     border-radius: 8px;
-    padding: 12px 8px;
+    padding: 0.75rem 1.25rem;
 
     p {
     color: white;
@@ -53,8 +53,7 @@
 
   .nav-right-buttons-div li {
     list-style: none;
-    font-size: 12vw;
-    line-height: 63px;
+    // line-height: 63px;
   }
 
   .nav-right-buttons-div .fa-circle {
@@ -73,6 +72,24 @@
     z-index: 4;
     bottom: 18%;
     right: 8%;
+  }
+
+  .nav-right-icons-list li {
+    position: relative;
+    z-index: 10;
+    margin-top: 0.5rem;
+
+    &::before {
+      position: absolute;
+      z-index: -1;
+      top: 7.5%;
+      left: 7.5%;
+      content: "";
+      height: 85%;
+      width: 85%;
+      background-color: rgba(255, 255, 255, .8);
+      border-radius: 50%;
+    }
   }
 
   //bottom menu pane
@@ -110,3 +127,18 @@
     height: 60px;
   }
 }
+
+  // alert
+  .alert-gg {
+    bottom: 20%;
+    left: 0;
+    width: 75%;
+    z-index:9999;
+    color: white;
+    background-color: rgba(#29353D, .7);
+    border-radius: 8px;
+  }
+
+  .close {
+    opacity: 1;
+  }
