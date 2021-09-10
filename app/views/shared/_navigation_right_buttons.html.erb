@@ -4,7 +4,9 @@
     <li><span class="iconify button-call" data-icon="el:phone-alt" style="color: #29353D;"></span></li>
   <% end  %>
 
-  <li><span class="iconify button-msg" data-icon="bpmn:start-event-message" style="color:#29353D;"></span></li>
+  <%# Send message with current location%>
+  <span class="iconify button-msg" data-icon="bpmn:start-event-message" style="color:#29353D;" data-action="click->messaging#send" data-controller="messaging"></span>
+
 
   <%# flag normal %>
   <li><span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;" data-action="click->navigation-ui#flag"></span></li>
