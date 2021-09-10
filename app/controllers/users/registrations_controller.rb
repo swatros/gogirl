@@ -9,6 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # Override Devise default behaviour and create a contact as well
     build_resource({})
     resource.contacts.build
+    resource.contacts.build
     respond_with self.resource
   end
 
