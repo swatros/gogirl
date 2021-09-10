@@ -24,6 +24,7 @@ export default class extends Controller {
     this.map = new H.Map(this.mapTarget,
       defaultLayers.vector.normal.map, {
       padding: {top: 24, right: 60, bottom: 60, left: 60},
+      background: {color: 'black'},
       pixelRatio: window.devicePixelRatio || 1
   });
 
@@ -61,10 +62,10 @@ export default class extends Controller {
     let distanceToGo = (route.sections[0].travelSummary.length / 1000).toFixed(1)
 
     let etaHolder = document.getElementById('eta');
-    etaHolder.innerHTML = `ETA: ${eta.getHours()}:${eta.getMinutes()}`;
+    etaHolder.insertAdjacentHTML('beforeend', `${eta.getHours()}:${eta.getMinutes()}`);
 
     let distanceHolder = document.getElementById('distance');
-    distanceHolder.innerHTML = `Distance: ${distanceToGo} km`;
+    distanceHolder.insertAdjacentHTML('beforeend', `${distanceToGo} km`);
 
     // let totalTime = eta - Date.now()
     // console.log(totalTime)
