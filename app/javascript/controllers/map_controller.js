@@ -3,7 +3,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  static targets = ["map", "directions"]
+  static targets = ["map", "directions", "summary"]
 
   connect() {
 
@@ -49,10 +49,25 @@ export default class extends Controller {
       const onSuccess = (result) => {
         if (result.routes.length) {
           this.drawRoute(result.routes[0])
+          this.summarizeRoute(result.routes[0])
         }
       }
 
       router.calculateRoute(routeRequestParams, onSuccess);
+  }
+
+  summarizeRoute(route) {
+    let eta = new Date(route.sections[0].arrival.time);
+    let distanceToGo = (route.sections[0].travelSummary.length / 1000).toFixed(1)
+
+    let etaHolder = document.getElementById('eta');
+    etaHolder.innerHTML = `ETA: ${eta.getHours()}:${eta.getMinutes()}`;
+
+    let distanceHolder = document.getElementById('distance');
+    distanceHolder.innerHTML = `Distance: ${distanceToGo} km`;
+
+    // let totalTime = eta - Date.now()
+    // console.log(totalTime)
   }
 
   drawRoute(route) {
