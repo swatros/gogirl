@@ -1,21 +1,53 @@
-.background {
-
+.splash-container {
   background-color: #9AABD5;
-  text-align: center;
   height: 100vh;
-  align-items: center;
-  position: relative;
-  .container-info {
-    position: absolute;
-    top:74px;
-    color: white;
-  }
+}
 
+.splash-header {
+  text-align: center;
+  padding: 40px;
+  font-family: roboto, sans-serif;
+  color: white;
+}
+
+.splash-header h1 {
+  font-size: 52px;
+  font-family: inherit;
+}
+
+.splash-header p {
+  font-size: 16px;
+  font-family: inherit;
 }
 
 .circle {
+    position: relative;
     background-color: white;
     border-radius: 50%;
-    width: 70%;
+    width: 300px;
+    height: 300px;
     margin: 0 auto;
+    img {
+      position: absolute;
+      left: 25%;
+      top: 5%;
+      display: block;
+      object-fit: contain;
+      height: 90%;
+      margin: 0 auto;
+    }
+}
+
+.splash-buttons {
+  margin-top: 60px;
+  button {
+    border: none;
+    display: block;
+    margin: 0 auto;
+    padding: 16px 40px;
+    width: 60%;
+    border-radius: 45px;
+    background-color: #29353D;
+    color: white;
   }
+}
