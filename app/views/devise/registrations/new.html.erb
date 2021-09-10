@@ -1,52 +1,63 @@
-<h2>Sign up</h2>
+<h2 style="text-align:center;" class="my-4">Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs container">
+  <div class="form-inputs container col-10">
       <p style="text-align:center">Profile information</p>
     <%= f.input :first_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "first name" }%>
+                label: false,
+                input_html: { autocomplete: "first name", class: "log-input", placeholder: "First name" }
+                 %>
     <%= f.input :last_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "last name" }%>
+                label: false,
+                input_html: { autocomplete: "last name", class: "log-input", placeholder: "Last name"}
+                %>
     <%= f.input :phone_number,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "phone number" }%>
+                label: false,
+                input_html: { autocomplete: "phone number", class: "log-input", placeholder: "Phone number"}%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                label: false,
+                input_html: { autocomplete: "email", class: "log-input", placeholder: "Email" }%>
     <%= f.input :password,
                 required: true,
+                label: false,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", class: "log-input", placeholder: " New password" } %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
-
-    <p style="text-align:center">Emergency contact 1</p>
+                label: false,
+                input_html: { autocomplete: "new-password", class: "log-input", placeholder: "Password confirmation" } %>
+    <% i=0  %>
     <%= f.simple_fields_for :contacts do |g| %>
-      <%= g.input :first_name %>
-      <%= g.input :last_name %>
-      <%= g.input :phone_number %>
-    <% end %>
-
-    <p style="text-align:center">Emergency contact 2</p>
-    <%= f.simple_fields_for :contacts do |g| %>
-      <%= g.input :first_name %>
-      <%= g.input :last_name %>
-      <%= g.input :phone_number %>
+      <% i+=1 %>
+      <p style="text-align:center">Emergency contact <%= i %></p>
+      <%= g.input :first_name,
+                  label: false,
+                  input_html: { class: "log-input", placeholder: "First name" }
+      %>
+      <%= g.input :last_name,
+        label: false,
+        input_html: { class: "log-input", placeholder: "Last name" }
+      %>
+      <%= g.input :phone_number,
+        label: false,
+        input_html: { class: "log-input", placeholder: "Phone number" }
+      %>
     <% end %>
   </div>
 
-  <div class="form-actions container">
+  <div style="text-align:center;" class="form-actions container button-blue col-4">
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<% render "devise/shared/links" %>

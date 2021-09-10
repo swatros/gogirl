@@ -4,9 +4,12 @@
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
-    <div class="container">
+    <div class="container col-10">
       <div class="form-inputs">
-        <%= f.input :email, required: false, autofocus: true %>
+        <%= f.input :email,
+                    required: false ,
+                    autofocus: true,
+                    input_html: { autocomplete: "email", class: "log-input", placeholder: "Email" } %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -14,46 +17,55 @@
         <%= f.input :first_name,
                     required: false,
                     autofocus: true,
-                    input_html: { autocomplete: "first name" }%>
+                    input_html: { autocomplete: "first name", class: "log-input", placeholder: "First name" }%>
         <%= f.input :last_name,
                     required: false,
                     autofocus: true,
-                    input_html: { autocomplete: "last name" }%>
+                    input_html: { autocomplete: "last name", class: "log-input", placeholder: "Last name" }%>
         <%= f.input :phone_number,
                     required: false,
                     autofocus: true,
-                    input_html: { autocomplete: "phone number" }%>
+                    input_html: { autocomplete: "phone number", class: "log-input", placeholder: "Phone number" }%>
         <%= f.input :password,
                     hint: "leave it blank if you don't want to change it",
                     required: false,
-                    input_html: { autocomplete: "new-password" } %>
+                    input_html: { autocomplete: "new-password", class: "log-input", placeholder: "New password" } %>
         <%= f.input :password_confirmation,
                     required: false,
-                    input_html: { autocomplete: "new-password" } %>
+                    input_html: { autocomplete: "new-password", class: "log-input", placeholder: "Password confirmation" } %>
         <%= f.input :current_password,
                     hint: "we need your current password to confirm your changes",
                     required: true,
-                    input_html: { autocomplete: "current-password" } %>
+                    input_html: { autocomplete: "current-password", class: "log-input", placeholder: "Current password" } %>
 
         <% i = 0 %>
         <%= f.simple_fields_for :contacts do |g| %>
           <% i += 1 %>
           <p style="text-align:center">Emergency contact <%= i %></p>
-            <%= g.input :first_name %>
-            <%= g.input :last_name %>
-            <%= g.input :phone_number %>
+            <%= g.input :first_name,
+                  label: false,
+                  input_html: { class: "log-input", placeholder: "First name" }
+            %>
+            <%= g.input :last_name,
+              label: false,
+              input_html: { class: "log-input", placeholder: "Last name" }
+            %>
+            <%= g.input :phone_number,
+              label: false,
+              input_html: { class: "log-input", placeholder: "Phone number" }
+            %>
           <% end %>
       </div>
     </div>
 
-    <div class="form-actions button-blue col-4", style="text-align:center;">
+    <div class="form-actions button-blue col-4", style="text-align:center;margin:0 auto">
       <%= f.button :submit, "Update" %>
     </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <h3 class="mt-4">Cancel my account</h3>
 
   <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-  <%= link_to "Back", :back %>
+  <%= link_to "Back", root_path %>
 </div>
