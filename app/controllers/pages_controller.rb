@@ -1,7 +1,11 @@
 require 'json'
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :navigation ]
+  skip_before_action :authenticate_user!, only: [ :home, :splash ]
+
+  def home
+    redirect_to splash_path unless user_signed_in?
+  end
 
   def navigation
     @origin = Geocoder.search(params[:origin]).first.coordinates
