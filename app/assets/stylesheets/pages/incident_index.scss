@@ -1,0 +1,67 @@
+
+.incidents-index-wrapper {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+// title and description
+.incidents-index-wrapper h1 {
+  font-size: 30px;
+  color: #29353D;
+  padding-top: 13px;
+}
+
+.incidents-index-wrapper p {
+  color: #29353D;
+}
+
+// exit button
+
+.incident-index-exit-button {
+  position: absolute;
+  top: 4%;
+  right: 7%;
+  text-decoration: none;
+  color:  #29353D;
+}
+
+//incident card
+.incident-card {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px lightgray;
+  position: relative;
+}
+
+.index-card-title-and-flag {
+  display: flex;
+  padding-bottom: 20px;
+}
+
+
+.index-card-title-and-flag .button-flag {
+  height: 38px;
+}
+
+.index-card-title-and-flag h2 {
+  font-size: 20px;
+  padding-top: 7px;
+  padding-left: 6px;
+  color: #29353D;
+}
+
+.index-card-content {
+  padding-left: 10px;
+}
+
+.incident-index-edit-button {
+  position: absolute;
+  bottom: 8%;
+  right: 6%;
+  width: 85px;
+  height: 43px;
+  font-size: 17px;
+}
