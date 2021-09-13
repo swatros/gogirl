@@ -2,9 +2,11 @@
   <div class = "navigation-back-buttons-div">
     <%= render 'shared/navigation_back_button' %>
   </div>
+  <% if signed_in? && @journey.user == current_user %>
   <div class = "navigation-right-buttons-div">
     <%= render 'shared/navigation_right_buttons' %>
   </div>
+  <% end %>
 
   <div class = "navigation-pane-div">
     <%= render 'shared/navigation_pane' %>

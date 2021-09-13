@@ -4,9 +4,13 @@
   </div>
 
   <div class = "nav-bottom-buttons-div">
-    <%= link_to journey_incidents_path(@journey) do %>
-      <button class="button-white">I'm home</button>
+    <% if signed_in? && @journey.user == current_user %>
+      <%= link_to journey_incidents_path(@journey) do %>
+        <button class="button-white">I'm home</button>
+      <% end %>
+      <button class="button-sos">911</button>
+    <% else %>
+      <p>Following this person</p>
     <% end %>
-    <button class="button-sos">911</button>
   </div>
 </div>
