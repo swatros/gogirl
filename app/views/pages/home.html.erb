@@ -8,19 +8,21 @@
   <% end %>
   <%# Autocomplete input forms and button %>
   <div class="home-div-inputs">
-    <form action="/navigation" method="GET">
+    <%= simple_form_for Journey.new do %>
         <input name="origin" class="home-input-location" id = "home-input-start" placeholder= "Start location">
         <input name="destination" class="home-input-location" id = "home-input-destination" placeholder= "Destination" >
         <button type="submit" class="button-blue"> GO GIRL </button>
-    </form>
+    <% end %>
   </div>
 
   <%# Pattern %>
   <%= image_tag "newmapdashedline.svg", class: "home-page-pattern" %>
 
  <%# Flag card  %>
-  <div class = "home-flag-card">
-    <p> Flag an incident </p>
-    <span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;"></span>
-  </div>
+  <%= link_to new_incident_path(@incident) do %>
+    <div class = "home-flag-card">
+      <p> Flag an incident </p>
+      <span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;"></span>
+    </div>
+  <% end %>
 </div>

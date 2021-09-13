@@ -30,21 +30,4 @@ class PagesController < ApplicationController
   def survey
     @incident = Incident.last
   end
-
-  private
-
-  def draw_box(incident)
-    latitude = incident.latitude
-    longitude = incident.longitude
-    radius = 0.002
-    top_left_lat = latitude + radius / 2
-    top_left_lng = longitude + radius
-    bottom_right_lat = latitude - radius / 2
-    bottom_right_lng = longitude - radius
-    return "bbox:#{top_left_lng},#{top_left_lat},#{bottom_right_lng},#{bottom_right_lat}"
-  end
-
-  def combine_boxes(incidents)
-    incidents.map{ |incident| draw_box(incident) }.join('|')
-  end
 end

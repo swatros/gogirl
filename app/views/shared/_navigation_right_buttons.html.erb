@@ -1,20 +1,21 @@
 <div class="nav-right-buttons-div">
   <ul class = "nav-right-icons-list">
   <%= link_to calling_path do %>
-    <li><span class="iconify button-call" data-icon="el:phone-alt" style="color: #29353D;"></span></li>
+    <li><span class="iconify button-call icon-backg" data-icon="el:phone-alt" style="color: #29353D;"></span></li>
   <% end  %>
 
   <%# Send message with current location%>
-  <span class="iconify button-msg" data-icon="bpmn:start-event-message" style="color:#29353D;" data-action="click->messaging#send" data-controller="messaging"></span>
+  <li><span class="iconify button-msg icon-backg" data-icon="bpmn:start-event-message" style="color:#29353D;" data-action="click->messaging#send" data-controller="messaging"></span>
+  </li>
 
 
   <%# flag normal %>
-  <li><span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;" data-action="click->navigation-ui#flag"></span></li>
+  <li><span class="iconify button-flag icon-backg" data-icon="el:flag-alt" style="color: #b44143;" data-action="click->navigation-ui#flag"></span></li>
   </ul>
 
-  <ul class = "nav-right-circles-list">
+  <%# <ul class = "nav-right-circles-list">
     <li><i class="fas fa-circle"></i></li>
     <li><i class="fas fa-circle"></i></li>
     <li><i class="fas fa-circle"></i></li>
-  </ul>
+  </ul> %>
 </div>
