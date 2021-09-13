@@ -7,6 +7,28 @@
     <%= link_to journey_incidents_path(@journey) do %>
       <button class="button-white">I'm home</button>
     <% end %>
-    <button class="button-sos">911</button>
+    <%#Button to call 911%>
+    <button type="button" class="button-sos" data-toggle="modal" data-target="#exampleModal" data-controller="emergency" data-emergency-target="button">SOS</button>
+  </div>
+</div>
+
+<!-- Confirmation message -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You will be redirected with the police.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="tel:+34627841248"><button type="button" class="btn btn-danger" >Call</button></a>
+      </div>
+    </div>
   </div>
 </div>
