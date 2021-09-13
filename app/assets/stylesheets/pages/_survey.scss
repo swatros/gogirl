@@ -1,6 +1,7 @@
 .survey {
   padding: 16px 24px;
   font-family: roboto, sans-serif;
+  background-color: white;
 }
 
 .survey h1 {
@@ -59,6 +60,7 @@
   background-image: none !important;
   text-align: center;
   color: #66717E;
+
 }
 
 .custom-date {
@@ -77,4 +79,16 @@
 
 .no-paragraph {
   padding-top: 8px !important;
+}
+
+// algolia places autocomplete input field for location
+#survey-input-location {
+  padding-top: 23px;
+  padding-bottom: 23px;
+  padding-left: 23px;
+  text-align: left;
+}
+
+#survey-input-location::placeholder {
+  color: #66717E;
 }

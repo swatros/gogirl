@@ -10,8 +10,8 @@
     <div class="survey-form">
       <div class="custom-field">
       <h3>Where did it happen?</h3>
-      <%= f.input :location, label: false, input_html: {class: "form-inputs"},
-      wrapper_html: {class: "no-paragraph" } %>
+      <%# Autocomplete location %>
+      <input name="incident[location]" class="form-inputs" id = "survey-input-location" placeholder= "Location of the incident">
       </div>
       <div class="custom-field">
         <h3>What date did it happen on?</h3>
@@ -25,7 +25,7 @@
       <div class="custom-field">
         <h3>What was the nature of the incident?</h3>
         <p>Select all the categories that apply. If none apply, choose the closest category.</p>
-        <%= f.input :crime, collection: ["catcalling", "theft", "sexual assault", "stalking"], label: false, input_html: {class: "form-inputs"} %>
+        <%= f.input :crime, collection: [ "theft", "unwanted physical contact", "derogatory comments", "stalking", "threatening behavior", "sexual assault", "violent assault"], label: false, required: true, input_html: {class: "form-inputs"} %>
       </div>
       <div class="custom-field">
         <h3>Additional description:</h3>
