@@ -5,7 +5,7 @@ class Incident < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :geocode?
   after_validation :reverse_geocode, if: :reverse_geocode?
-  # validates :crime, inclusion: {in: CRIME_TYPES} # ADD REQUIRE:TRUE TO SIMPLE FORM ON SURVEY
+  # validates :crime, inclusion: {in: CRIME_TYPES} # REQUIRED:TRUE IN SIMPLE FORM ON SURVEY DOES THIS ALREADY
 
   def reverse_geocode
     self.location = Geocoder.search([latitude, longitude]).first.address
