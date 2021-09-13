@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :journeys, dependent: :nullify
 
   accepts_nested_attributes_for :contacts
+
+  def full_name
+    first_name + " " + last_name
+  end
 end

@@ -4,6 +4,15 @@
   </div>
 
   <div class = "nav-bottom-buttons-div">
+    <% if signed_in? && @journey.user == current_user %>
+      <%= link_to journey_incidents_path(@journey) do %>
+        <button class="button-white">I'm home</button>
+      <% end %>
+      <button class="button-sos">911</button>
+    <% else %>
+      <h3 style="color: white;">You are following <%= @journey.user.full_name %> </h3>
+    <% end %>
+    
     <%# I'm home button %>
       <%= link_to journey_incidents_path(@journey) do %>
         <button class="button-white">I'm here</button>
