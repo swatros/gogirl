@@ -1,35 +1,8 @@
-<div class="container"></div>
-  <h1>Welcome to Go Girl!</h1>
-
-  <%= simple_form_for User.new do |f| %>
-    <%= f.input :first_name, label: false, placeholder: "First Name", input_html: { class: "log-input"} %>
-  <% end %>
-
-  <%= simple_form_for User.new do |f| %>
-    <%= f.input :first_name, label: false, placeholder: "First Name", input_html: { class: "home-input-location"} %>
-  <% end %>
-
-  <button class="button-blue">SIGN UP</button>
-  <button class="button-white">Start route</button>
-  <div class="col-5">
-    <button class="button-sos">SOS</button>
-  </div>
-
-  <!-- Phone -->
-  <span class="iconify button-call" data-icon="el:phone-alt" style="color: #29353D;"></span>
-  <!-- Message -->
-  <span class="iconify button-msg" data-icon="bpmn:start-event-message" style="color:#29353D;"></span>
-  <!-- Flag -->
-  <span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;"></span>
-  <!-- Light -->
-  <span class="iconify button-ratings light" data-icon="emojione:light-bulb" style="color: #b44143;"></span>
-  <!-- Crowd -->
-  <span class="iconify button-ratings crowd" data-icon="raphael:people" style="color: #29353d;"></span>
-
-  <%= link_to calling_path do %>
-    <span class="iconify button-call" data-icon="el:phone-alt" style="color: #29353D;"></span>
-  <% end  %>
-
-
-
+<div class="container">
+<form id="login" onsubmit="process(event)">
+  <p>Enter your phone number:</p>
+  <input class="phone-input" type="tel" name="phone" />
+  <input type="submit" class="btn" value="Verify" />
+</form>
+<div class="alert alert-info" style="display: none;"></div>
 </div>

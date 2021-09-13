@@ -26,7 +26,7 @@ require("channels")
 import "bootstrap";
 import Iconify from '@iconify/iconify';
 import { initAutocomplete } from '../plugins/init_autocomplete'
-
+import { initTelInputs } from '../plugins/init_tel_inputs'
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -34,6 +34,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initAutocomplete();
+  initTelInputs();
 });
 
 import "controllers"
