@@ -12,5 +12,13 @@
     <% else %>
       <h3 style="color: white;">You are following <%= @journey.user.full_name %> </h3>
     <% end %>
+    
+    <%# I'm home button %>
+      <%= link_to journey_incidents_path(@journey) do %>
+        <button class="button-white">I'm here</button>
+      <% end %>
+
+    <%# SOS button %>
+    <button class="button-sos">911</button>
   </div>
 </div>

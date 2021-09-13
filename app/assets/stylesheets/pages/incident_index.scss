@@ -4,6 +4,7 @@
   height: 100vh;
   padding: 20px;
   position: relative;
+  background-color: white;
 }
 
 // title and description
@@ -29,6 +30,7 @@
 
 //incident card
 .incident-card {
+  margin-bottom: 20px;
   padding: 20px;
   background-color: white;
   border-radius: 8px;
@@ -57,11 +59,27 @@
   padding-left: 10px;
 }
 
-.incident-index-edit-button {
+.incident-edit-button {
   position: absolute;
-  bottom: 8%;
-  right: 6%;
-  width: 85px;
-  height: 43px;
+  bottom: 10%;
+  right: 16%;
   font-size: 17px;
+}
+
+.incident-edit-button a {
+  color: gray;
+  text-decoration: none;
+}
+
+// destroy button
+.incident-destroy-button {
+  position: absolute;
+  bottom: 10%;
+  right: 6%;
+  font-size: 17px;
+}
+
+.incident-destroy-button a {
+  color: gray;
+  text-decoration: none;
 }
