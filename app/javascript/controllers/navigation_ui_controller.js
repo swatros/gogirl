@@ -11,7 +11,11 @@ export default class extends Controller {
     this.journeyId = this.containerTarget.dataset.journeyId
   }
 
-  flag() {
+  flag(event) {
+
+    const flagButton = event.currentTarget
+    flagButton.classList.add('disabled')
+
     this.getCurrentLocation(
       (response) => {
         console.log(response.coords.latitude)
@@ -31,6 +35,7 @@ export default class extends Controller {
         })
           .then(response => response.text())
           .then((data) => {
+            flagButton.classList.remove('disabled');
             document.querySelector('body').insertAdjacentHTML('beforeend', data);
           })
       }
