@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   get "/calling", to: "pages#calling"
   get "/navigation", to: "pages#navigation"
   get "/uikit", to: "pages#uikit"
+  get "/survey_success", to: "pages#survey_success"
+  get "/emergency_number/:iso", to: "emergency_numbers#show"
 end

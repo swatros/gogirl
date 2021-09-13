@@ -5,59 +5,70 @@
 
   <div class="form-inputs container col-10">
       <p style="text-align:center">Profile information</p>
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true,
-                label: false,
-                input_html: { autocomplete: "first name", class: "log-input", placeholder: "First name" }
-                 %>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                label: false,
-                input_html: { autocomplete: "last name", class: "log-input", placeholder: "Last name"}
-                %>
-    <%= f.input :phone_number,
-                required: true,
-                autofocus: true,
-                label: false,
-                input_html: { autocomplete: "phone number", class: "log-input", placeholder: "Phone number"}%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                label: false,
-                input_html: { autocomplete: "email", class: "log-input", placeholder: "Email" }%>
-    <%= f.input :password,
-                required: true,
-                label: false,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password", class: "log-input", placeholder: " New password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                label: false,
-                input_html: { autocomplete: "new-password", class: "log-input", placeholder: "Password confirmation" } %>
+    <div class="phone-wrapper">
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  input_html: { autocomplete: "first name", class: "log-input", placeholder: "First name" }
+                  %>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  input_html: { autocomplete: "last name", class: "log-input", placeholder: "Last name"}
+                  %>
+      <input class="phone-input log-input border-0" type="tel" name="phone" />
+      <%= f.input :phone_number,
+                  required: true,
+                  autofocus: true,
+                  as: :hidden,
+                  label: false,
+                  input_html: { autocomplete: "phone number", class: "log-input phone-value", placeholder: "Phone number"}%>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  input_html: { autocomplete: "email", class: "log-input", placeholder: "Email" }%>
+      <%= f.input :password,
+                  required: true,
+                  label: false,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password", class: "log-input", placeholder: " New password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  label: false,
+                  input_html: { autocomplete: "new-password", class: "log-input", placeholder: "Password confirmation" } %>
+    </div>
     <% i=0  %>
     <%= f.simple_fields_for :contacts do |g| %>
-      <% i+=1 %>
-      <p style="text-align:center">Emergency contact <%= i %></p>
-      <%= g.input :first_name,
-                  label: false,
-                  input_html: { class: "log-input", placeholder: "First name" }
-      %>
-      <%= g.input :last_name,
-        label: false,
-        input_html: { class: "log-input", placeholder: "Last name" }
-      %>
-      <%= g.input :phone_number,
-        label: false,
-        input_html: { class: "log-input", placeholder: "Phone number" }
-      %>
+      <div class="phone-wrapper">
+        <% i+=1 %>
+        <p style="text-align:center">Emergency contact <%= i %></p>
+        <%= g.input :first_name,
+                    label: false,
+                    input_html: { class: "log-input", placeholder: "First name" }
+        %>
+        <%= g.input :last_name,
+          label: false,
+          input_html: { class: "log-input", placeholder: "Last name" }
+        %>
+        <input class="phone-input log-input border-0 w-100" type="tel" name="phone" />
+        <%= g.input :phone_number,
+          label: false,
+          as: :hidden,
+          input_html: { class: "log-input phone-value", placeholder: "Phone number" }
+        %>
+      </div>
     <% end %>
   </div>
 
-  <div style="text-align:center;" class="form-actions container button-blue col-4">
+  <div style="text-align:center;" class="form-actions container button-blue col-4 mb-4">
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
 
 <% render "devise/shared/links" %>
+<div class="alert alert-info" style="display: none;">
+  Invalid phone number
+</div>

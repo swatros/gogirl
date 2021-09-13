@@ -24,6 +24,9 @@ gem 'redis', '~> 4.0'
 
 # Use geocoder
 gem 'geocoder'
+# Emergency numbers per ISO country code
+gem 'emergency_number'
+gem 'httparty'
 
 # Use Twilio
 gem 'twilio-ruby'
