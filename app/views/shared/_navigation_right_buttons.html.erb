@@ -1,8 +1,9 @@
 <div class="nav-right-buttons-div">
   <ul class = "nav-right-icons-list" data-controller="messaging" data-journey-id="<%= @journey.id %>" data-messaging-target="journey">
-  <%= link_to calling_path do %>
-    <li><span class="iconify button-call icon-backg" data-icon="el:phone-alt" style="color: #29353D;"></span></li>
-  <% end  %>
+  <!--<%= link_to calling_path do %> -->
+    <li><span class="iconify button-call icon-backg" data-icon="el:phone-alt" style="color: #29353D;" data-toggle="modal" data-target="#exampleModal"></span></li>
+  <!-- <% end  %> -->
+
 
   <%# Send message with current location%>
   <li><span class="iconify button-msg icon-backg" data-icon="bpmn:start-event-message" style="color:#29353D;" data-action="click->messaging#send"></span>

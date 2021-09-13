@@ -13,3 +13,18 @@
   </div>
   <%= render 'shared/navigation_bottom_menu' %>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body">
+      <% @contacts.each do |contact| %>
+        <a class="button-sos" href="tel:<%= contact.phone_number %>"> <%= contact.first_name.capitalize %> <%= contact.last_name.capitalize %></a>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
