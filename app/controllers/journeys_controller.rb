@@ -1,6 +1,9 @@
 class JourneysController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :show ]
+
   def show
     @journey = Journey.find(params[:id])
+    @contacts = @journey.user.contacts
     @origin = Geocoder.search(@journey.origin_address).first.coordinates
     @destination = Geocoder.search(@journey.destination_address).first.coordinates
     @distance = Geocoder::Calculations.distance_between(@origin, @destination)

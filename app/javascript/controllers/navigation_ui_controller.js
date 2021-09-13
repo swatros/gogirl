@@ -5,7 +5,7 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ['form', "container"];
+  static targets = ['form', "container", "map", "directions"];
 
   connect() {
     this.journeyId = this.containerTarget.dataset.journeyId
@@ -42,6 +42,11 @@ export default class extends Controller {
     )
   }
 
+  switch() {
+    console.log("hello")
+    this.directionsTarget.classList.toggle("directions-hide")
+    this.directionsTarget.classList.toggle("directions-show")
+  }
 
   async getCurrentLocation(callback) {
     navigator.geolocation.getCurrentPosition(callback)
