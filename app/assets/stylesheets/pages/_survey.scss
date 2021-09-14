@@ -1,43 +1,37 @@
-.survey {
-  padding: 16px 24px;
-  font-family: roboto, sans-serif;
+.survey-container {
+  padding: 24px;
   background-color: white;
 }
 
-.survey h1 {
-  font-weight: bold;
-  font-family: roboto, sans-serif;
-  font-size: 28px;
+.survey-container h1 {
+  font-size: 30px;
+  color: #29353D;
+  margin-top: 2vh;
 }
 
-.survey .head-message {
-  padding-left: 8px;
-}
-
-.survey .head-message p {
-  color: #66717E;
+.survey-container .head-message p {
+  color: #29353D;
+  font-size: 15px;
 }
 
 .survey-form h3 {
   border-bottom: 1px solid black;
-  padding-left: 8px;
   padding-top: 8px;
   font-family: roboto, sans-serif;
   font-size: 20px;
-  font-style: italic;
   color: #29353D;
 }
 
 .survey-form p {
-  padding-left: 8px;
-  color: #66717E;
+  color: #29353D;
+  font-size: 15px;
 }
 
-.survey .custom-field {
+.survey-container .custom-field {
   margin-bottom: 8px;
 }
 
-.survey .custom-submit {
+.survey-container .custom-submit {
   margin: 24px 0px;
   width: 100%;
   border-radius: 25px;
@@ -54,13 +48,22 @@
   justify-content: space-between;
 }
 
+.title-exitbtn .fa-times-circle {
+  top: 4%;
+  right: 7%;
+  color: #29353D;
+}
+
 .form-inputs {
   border-radius: 25px;
-  border-color: #66717E !important;
   background-image: none !important;
   text-align: center;
-  color: #66717E;
+  color: gray;
 
+}
+
+.form-inputs:focus {
+  color: #6c7ba5e6;
 }
 
 .custom-date {
@@ -91,4 +94,9 @@
 
 #survey-input-location::placeholder {
   color: #66717E;
+}
+
+// submit button
+.survey-container .custom-submit {
+  border-radius: 36px;
 }
