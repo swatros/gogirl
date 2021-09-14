@@ -12,4 +12,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   accepts_nested_attributes_for :contacts
+
+  include Abyme::Model
+  abymize :contacts
 end

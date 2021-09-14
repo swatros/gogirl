@@ -46,27 +46,16 @@
                   label: false,
                   input_html: { autocomplete: "new-password", class: "log-input", placeholder: "Password confirmation" } %>
     </div>
-    <% i=0  %>
-    <%= f.simple_fields_for :contacts do |g| %>
-      <div class="phone-wrapper">
-        <% i+=1 %>
-        <p style="text-align:center">Emergency contact <%= i %></p>
-        <%= g.input :first_name,
-                    label: false,
-                    input_html: { class: "log-input", placeholder: "First name" }
-        %>
-        <%= g.input :last_name,
-          label: false,
-          input_html: { class: "log-input", placeholder: "Last name" }
-        %>
-        <input class="phone-input log-input border-0 w-100" type="tel" name="phone" />
-        <%= g.input :phone_number,
-          label: false,
-          as: :hidden,
-          input_html: { class: "log-input phone-value", placeholder: "Phone number" }
-        %>
-      </div>
+    <%= f.abyme_for(:contacts) do |abyme| %>
+      <%= abyme.records %>
+      <%= abyme.new_records %>
+      <%= add_associated_record(html: {class:"add-button"}) do %>
+        <span class="iconify button-add" data-icon="carbon:add-alt"></span>
+        <%= "Add emergency contact" %>
+      <% end %>
     <% end %>
+
+
   </div>
 
   <div style="text-align:center;" class="form-actions button-blue col-4 mb-4 mt-4">
