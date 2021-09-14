@@ -16,14 +16,14 @@
 
 <div class="modal fade" id="emergencyModal" tabindex="-1" role="dialog" aria-labelledby="emergencyModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content d-inline-flex">
+    <div class="modal-content dropdown-box d-inline-flex">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <h5 class="modal-title" id="emergencyModalLabel">Select an emergency contact:</h5>
         <span aria-hidden="true">&times;</span>
       </button>
-      <div class="modal-body">
+      <div class="modal-body d-flex flex-column justify-content-center call-dropdown">
         <% @contacts.each do |contact| %>
-          <a class="button-sos" href="tel:<%= contact.phone_number %>"> <%= contact.first_name.capitalize %> <%= contact.last_name.capitalize %></a>
+          <a class="button-sos text-center mb-2" href="tel:<%= contact.phone_number %>"> <%= contact.first_name.capitalize %> <%= contact.last_name.capitalize %></a>
         <% end %>
       </div>
     </div>
