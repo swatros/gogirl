@@ -9,5 +9,7 @@ class User < ApplicationRecord
   has_many :incidents, dependent: :nullify
   has_many :journeys, dependent: :nullify
 
+  has_one_attached :avatar
+
   accepts_nested_attributes_for :contacts
 end

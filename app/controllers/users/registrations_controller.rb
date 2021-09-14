@@ -17,6 +17,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :contacts_attributes => [:first_name, :last_name, :phone_number]] )
+    devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :avatar, :contacts_attributes => [:first_name, :last_name, :phone_number]] )
+
   end
 
   # The path used after sign up.

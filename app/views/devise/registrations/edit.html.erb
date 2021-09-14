@@ -10,7 +10,6 @@
                     required: false ,
                     autofocus: true,
                     input_html: { autocomplete: "email", class: "log-input", placeholder: "Email" } %>
-
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
@@ -37,7 +36,7 @@
                     hint: "we need your current password to confirm your changes",
                     required: true,
                     input_html: { autocomplete: "current-password", class: "log-input", placeholder: "Current password" } %>
-
+        <%= f.input :avatar, as: :file %>
         <% i = 0 %>
         <%= f.simple_fields_for :contacts do |g| %>
           <% i += 1 %>
