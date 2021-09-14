@@ -1,8 +1,4 @@
 <div class= "nav-bottom-menu-div">
-  <div class = "nav-bottom-toggle-div">
-    <%= image_tag "togglenav.svg", class: "nav-bottom-toggle" %>
-  </div>
-
   <div class = "nav-bottom-buttons-div">
     <% if signed_in? && @journey.user == current_user %>
       <%= link_to journey_incidents_path(@journey) do %>

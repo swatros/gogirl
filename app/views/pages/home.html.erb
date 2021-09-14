@@ -1,6 +1,6 @@
 <div class = "wrapper-home">
   <% if user_signed_in? %>
-    <%= image_tag "https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80", class: "avatar dropdown-toggle avatar-home", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <%= image_tag "defaultavatar.png", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, class: "avatar-home" %>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
       <%= link_to "My profile",  edit_user_registration_path, class: "dropdown-item" %>
       <%= link_to "Log out",   destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -16,13 +16,13 @@
   </div>
 
   <%# Pattern %>
-  <%= image_tag "newmapdashedline.svg", class: "home-page-pattern" %>
+  <%= image_tag "navyhomepattern.svg", class: "home-page-pattern" %>
 
  <%# Flag card  %>
   <%= link_to new_incident_path(@incident) do %>
     <div class = "home-flag-card">
       <p> Flag an incident </p>
-      <span class="iconify button-flag" data-icon="el:flag-alt" style="color: #b44143;"></span>
+      <span class="iconify button-flag" data-icon="el:flag-alt" style="color: #29353D;"></span>
     </div>
   <% end %>
 </div>
