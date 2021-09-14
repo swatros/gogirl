@@ -10,7 +10,7 @@
 }
 
 .button-white {
-  color: #6c7ba5;
+  color: #6c7ba5e6;
   font-weight: bold;
   width: 100%;
   background-color: white; /* Wild blue yonder */
@@ -56,9 +56,14 @@
   width: 50px;
 }
 
+// .button-msg {
+//   height: 55px;
+//   width: 55px;
+// }
+
 .button-msg {
-  height: 55px;
-  width: 55px;
+  font-size: 1.8rem;
+  color: white;
 }
 
 .button-ratings {
