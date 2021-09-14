@@ -22,18 +22,24 @@ export default class extends Controller {
     var defaultLayers = this.platform.createDefaultLayers();
 
     //Step 2: initialize a map
+
+
     this.map = new H.Map(this.mapTarget,
       defaultLayers.vector.normal.map, {
-      padding: {top: 24, right: 60, bottom: 60, left: 60},
+      padding: {top: 70, right: 100, bottom: 60, left: 30},
       background: {color: 'black'},
       pixelRatio: window.devicePixelRatio || 1
-  });
+    });
+
 
     //Step 3: make the map interactive
     var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
 
     // CALL OTHER MAP JS FUNCTIONS, AS DEFINED BELOW:
-    this.generateRoute({lat: this.origin[0], lng: this.origin[1]}, { lat: this.destination[0], lng: this.destination[1]});
+
+    if (this.origin && this.destination) {
+      this.generateRoute({lat: this.origin[0], lng: this.origin[1]}, { lat: this.destination[0], lng: this.destination[1]})
+    }
   }
 
   generateRoute(origin, destination) {
@@ -45,9 +51,12 @@ export default class extends Controller {
         'pedestrian[speed]': 1.4,
         origin: `${origin.lat},${origin.lng}`,
         destination: `${destination.lat},${destination.lng}`,
-        'avoid[areas]': this.avoidIncidents,
         return: 'polyline,turnByTurnActions,actions,instructions,travelSummary'
         };
+
+      if (this.avoidIncidents) {
+        routeRequestParams['avoid[areas]'] = this.avoidIncidents
+      }
 
       const onSuccess = (result) => {
         if (result.routes.length) {
