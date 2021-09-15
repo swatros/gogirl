@@ -25,3 +25,19 @@
     right:17px
   }
 }
+
+.sign-up-img{
+  position:absolute;
+  bottom: 0%;
+  right: 0%;
+  object-fit: cover;
+  height: 46vh;
+  img {
+    height: 100%;
+  }
+}
+
+.back {
+  background-color: white !important;
+  height: 100vh;
+}

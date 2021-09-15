@@ -1,29 +1,35 @@
-<div class = "nav-top">
-    <%= link_to root_path do %>
-      <i class="fas fa-chevron-circle-left"></i>
-    <% end %>
-</div>
+<div class="back">
+  <div class = "nav-top">
+      <%= link_to root_path do %>
+        <i class="fas fa-chevron-circle-left"></i>
+      <% end %>
+  </div>
 
-<h2 class="mt-5 mb-4" style="text-align:center">Welcome back!</h2>
+  <h2 class="mt-5 mb-4" style="text-align:center">Welcome back!</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs col-10">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                label: false,
-                input_html: { autocomplete: "email", class: "log-input", placeholder: "Email" }%>
-    <%= f.input :password,
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs col-10">
+      <%= f.input :email,
                   required: true,
+                  autofocus: true,
                   label: false,
-                  input_html: { autocomplete: "password", class: "log-input", placeholder: " Password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                  input_html: { autocomplete: "email", class: "log-input", placeholder: "Email" }%>
+      <%= f.input :password,
+                    required: true,
+                    label: false,
+                    input_html: { autocomplete: "password", class: "log-input", placeholder: " Password" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <div class="form-actions button-blue col-8" style="text-align:center">
+        <%= f.button :submit, "LOGIN" %>
+      </div>
+    </div>
+
+  <% end %>
+  <div class="sign-up text-center">
+    <%= render "devise/shared/links"%>
   </div>
 
-  <div class="form-actions button-blue col-3" style="text-align:center">
-    <%= f.button :submit, "Log in" %>
+  <div class="sign-up-img">
+    <%= image_tag("log_in") %>
   </div>
-<% end %>
-<div class="sign-up">
-  <%= render "devise/shared/links"%>
 </div>
