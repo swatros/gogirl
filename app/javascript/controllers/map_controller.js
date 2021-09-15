@@ -13,6 +13,7 @@ export default class extends Controller {
     this.destination = JSON.parse(this.mapTarget.dataset.destination);
     this.incidents = JSON.parse(this.mapTarget.dataset.incidents);
     this.avoidIncidents = this.mapTarget.dataset.avoid;
+    this.avoidObjects = JSON.parse(this.mapTarget.dataset.boxes)
 
     // Step 1: initialize communication with the platform
     var routeMapContainer = document.getElementById('map');
@@ -110,7 +111,7 @@ export default class extends Controller {
       var userIcon = new H.map.Icon('https://img.icons8.com/ios-filled/50/000000/user-female-circle.png', { size: { w: 25, h: 25 } })
 
 
-      function addMarkersToMap(map, incidents) {
+      function addMarkersToMap(map, incidents, boxes) {
         var destinationMarker = new H.map.Marker(
           {
             lat: route.sections[0].arrival.place.location.lat,
@@ -143,9 +144,30 @@ export default class extends Controller {
           })
           map.addObject(incidentMarker)
         })
+
+        // boxes.forEach((box) => {
+        //   var boundingBox = new H.geo.Rect(box.tllat, box.tllng, box.brlat, box.brlng);
+        //   function addRectangleToMap(map) {
+
+        //     map.addObject(
+        //       new H.map.Rect(boundingBox, {
+        //         style: {
+        //           fillColor: '#FFFFCC',
+        //           strokeColor: '#E8FA75',
+        //           lineWidth: 8
+        //         },
+        //       })
+        //     );
+        //   }
+
+
+
+
+        // })
+
   }
 
-      addMarkersToMap(this.map, this.incidents);
+      addMarkersToMap(this.map, this.incidents, this.boxes);
 
       // ADD CONTINUOUS USER LOCATION TO MAP AS ICON
 
