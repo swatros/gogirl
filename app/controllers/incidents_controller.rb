@@ -18,7 +18,7 @@ class IncidentsController < ApplicationController
 
     if @journey
       @incident.date = Date.today
-      @incident.time = Time.now
+      @incident.time = DateTime.now.to_s(:time)
       @incident.journey = @journey
       @incident.user = @journey.user
     else
