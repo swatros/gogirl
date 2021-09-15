@@ -58,6 +58,26 @@
       }
   }
 
+  .directions-toggle-div .fa-location-arrow {
+    position: relative;
+    z-index: 7;
+    color: white;
+    border-radius: 50%;
+    font-size: 5vw;
+
+    &::after {
+      position: absolute;
+      z-index: -1;
+      top: -54.5%;
+      left: -46.5%;
+      content: "";
+      height: 2em;
+      width: 2em;
+      background-color: #29353D;
+      border-radius: 50%;
+      }
+  }
+
   // summary
   .nav-summary-div {
     display: flex;

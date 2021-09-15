@@ -5,7 +5,7 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ['form', "container", "map", "directions", "spinnerButton"];
+  static targets = ['form', "container", "map", "directions", "spinnerButton", "directionButton", "arrowButton" ];
 
   connect() {
     this.journeyId = this.containerTarget.dataset.journeyId
@@ -48,8 +48,12 @@ export default class extends Controller {
 
   switch() {
     console.log("hello")
+    const directionButton = this.directionButtonTarget
+    const arrowButton = this.arrowButtonTarget
     this.directionsTarget.classList.toggle("directions-hide")
     this.directionsTarget.classList.toggle("directions-show")
+    directionButton.classList.toggle("d-none")
+    arrowButton.classList.toggle("d-none")
   }
 
   async getCurrentLocation(callback) {
