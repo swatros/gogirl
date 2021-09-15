@@ -23,7 +23,21 @@ class JourneysController < ApplicationController
 
   def create
     @journey = Journey.create(user: current_user, origin_address: params[:origin], destination_address: params[:destination])
+    if params[:journey][:share_location] == "1"
+      @journey.share_location
+    end
     redirect_to journey_path(@journey)
+  end
+
+  def broadcast
+    @journey = Journey.find(params[:id])
+    JourneyChannel.broadcast_to(
+      @journey,
+      {
+        latitude: params[:latitude],
+        longitude: params[:longitude]
+      }
+    )
   end
 
   private

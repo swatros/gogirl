@@ -1,6 +1,8 @@
 import H from "@here/maps-api-for-javascript";
 import { map } from "jquery";
-import { Controller } from "stimulus"
+import { Controller } from "stimulus";
+import { csrfToken } from "@rails/ujs";
+import consumer from "../channels/consumer";
 
 export default class extends Controller {
 
@@ -14,7 +16,7 @@ export default class extends Controller {
     this.incidents = JSON.parse(this.mapTarget.dataset.incidents);
     this.avoidIncidents = this.mapTarget.dataset.avoid;
     this.avoidObjects = JSON.parse(this.mapTarget.dataset.boxes)
-
+    this.isOwner = this.mapTarget.dataset.isOwner == "true"
     // Step 1: initialize communication with the platform
     var routeMapContainer = document.getElementById('map');
     this.platform = new H.service.Platform({
@@ -171,24 +173,29 @@ export default class extends Controller {
 
       // ADD CONTINUOUS USER LOCATION TO MAP AS ICON
 
-      const showPosition = (position) => {
-        console.log(position.coords)
-
-        if (this.userMarker) {
-          this.userMarker.setGeometry({ lat: position.coords.latitude, lng: position.coords.longitude })
-        } else {
-          this.userMarker = new H.map.Marker({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          },
-            {
-              icon: userIcon
-            })
-          this.map.addObject(this.userMarker)
+    const showPosition = (coords) => {
+      if (this.userMarker) {
+        this.userMarker.setGeometry({ lat: coords.latitude, lng: coords.longitude })
+      } else {
+        this.userMarker = new H.map.Marker({
+          lat: coords.latitude,
+          lng: coords.longitude
+        },
+          {
+            icon: userIcon
+          })
+        this.map.addObject(this.userMarker)
       }
     }
 
-    navigator.geolocation.watchPosition(showPosition);
+    if (this.isOwner) {
+      navigator.geolocation.watchPosition((position) => {
+        this.broadcastLocation(position.coords)
+        showPosition(position.coords)
+      });
+    } else {
+      this.initSubscription()
+    }
 
       // ADJUST MAP VIEW CENTER
 
@@ -221,5 +228,28 @@ export default class extends Controller {
 
     let routeDirectionsContainer = this.directionsTarget;
     routeDirectionsContainer.appendChild(nodeOL);
+  }
+
+  broadcastLocation(coords) {
+    const journeyId = this.mapTarget.dataset.journeyId
+    fetch(`/journeys/${journeyId}/broadcast`, {
+      method: "Post",
+      headers: {
+        "Content-Type": "application/json",
+        'X-CSRF-Token': csrfToken()
+      },
+      body: JSON.stringify({
+        latitude: coords.latitude,
+        longitude: coords.longitude
+      })
+    })
+  }
+
+  initSubscription() {
+    consumer.subscriptions.create({ channel: "JourneyChannel", id: this.mapTarget.dataset.journeyId }, {
+      received(data) {
+        console.log(data)
+      }
+    });
   }
 }

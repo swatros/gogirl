@@ -7,13 +7,17 @@ const initTelInputs = () => {
   })
 
   const contactsContainer = document.getElementById('abyme--contacts');
-  contactsContainer.addEventListener('abyme:after-add', () => {
-    const allWrappers = document.querySelectorAll('.phone-wrapper')
-    initInput(allWrappers[allWrappers.length - 1])
-  })
-  contactsContainer.addEventListener('abyme:limit-reached', () => {
-    alert('You reached the max number of contacts !')
-  });
+
+  if (contactsContainer) {
+    contactsContainer.addEventListener('abyme:after-add', () => {
+      const allWrappers = document.querySelectorAll('.phone-wrapper')
+      initInput(allWrappers[allWrappers.length - 1])
+    })
+    contactsContainer.addEventListener('abyme:limit-reached', () => {
+      alert('You reached the max number of contacts !')
+    });
+  }
+
 }
 
 const initInput = (wrapper) => {
