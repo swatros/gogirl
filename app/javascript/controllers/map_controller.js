@@ -134,40 +134,60 @@ export default class extends Controller {
         );
         map.addObject(originMarker);
 
+        // incidents.forEach((incident) => {
+        //   var incidentMarker = new H.map.Marker({
+        //     lat: incident.lat,
+        //     lng: incident.lng
+        //   },
+        //   {
+        //     icon: flagIcon
+        //   })
+        //   map.addObject(incidentMarker)
+        // })
+
+
+        var dataPoints = []
         incidents.forEach((incident) => {
-          var incidentMarker = new H.map.Marker({
-            lat: incident.lat,
-            lng: incident.lng
-          },
-          {
-            icon: flagIcon
+          var point = new H.clustering.DataPoint(incident.lat, incident.lng)
+          dataPoints.push(point)
           })
-          map.addObject(incidentMarker)
-        })
+
+
+
+          // Create a clustering provider with custom options for clusterizing the input
+          var clusteredDataProvider = new H.clustering.Provider(dataPoints, {
+            clusteringOptions: {
+              // Maximum radius of the neighbourhood
+              eps: 64,
+              // minimum weight of points required to form a cluster
+              minWeight: 1
+            }
+          });
+
+          // Create a layer tha will consume objects from our clustering provider
+          var clusteringLayer = new H.map.layer.ObjectLayer(clusteredDataProvider);
+
+          // To make objects from clustering provder visible,
+          // we need to add our layer to the map
+          map.addLayer(clusteringLayer);
+
+
 
         // boxes.forEach((box) => {
         //   var boundingBox = new H.geo.Rect(box.tllat, box.tllng, box.brlat, box.brlng);
-        //   function addRectangleToMap(map) {
-
-        //     map.addObject(
-        //       new H.map.Rect(boundingBox, {
-        //         style: {
-        //           fillColor: '#FFFFCC',
-        //           strokeColor: '#E8FA75',
-        //           lineWidth: 8
-        //         },
+        //   map.addObject(
+        //     new H.map.Rect(boundingBox, {
+        //       style: {
+        //       fillColor: 'transparent',
+        //       strokeColor: 'red',
+        //       lineWidth: 8
+        //         }
         //       })
         //     );
-        //   }
+        //   })
+      }
 
-
-
-
-        // })
-
-  }
-
-      addMarkersToMap(this.map, this.incidents, this.boxes);
+      addMarkersToMap(this.map, this.incidents, this.avoidObjects);
 
       // ADD CONTINUOUS USER LOCATION TO MAP AS ICON
 

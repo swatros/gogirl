@@ -15,17 +15,17 @@
       </div>
       <div class="custom-field">
         <h3>What date did it happen on?</h3>
-        <%= f.input :date, label: false, input_html: {class: "form-inputs custom-date"}, wrapper_html: {class: "time-wrapper no-paragraph"} %>
+        <%= f.input :date, label: false, required: true, input_html: {class: "form-inputs custom-date"}, wrapper_html: {class: "time-wrapper no-paragraph"} %>
       </div class="custom-field">
       <div>
         <h3>What time did it happen at?</h3>
         <p>If you aren’t sure, choose the nearest estimate.</p>
-        <%= f.input :time, label: false, input_html: {class: "form-inputs custom-date"}, wrapper_html: {class: "time-wrapper"} %>
+        <%= f.input :time, label: false, required: true, input_html: {class: "form-inputs custom-date"}, wrapper_html: {class: "time-wrapper"} %>
       </div>
       <div class="custom-field">
         <h3>What was the nature of the incident?</h3>
         <p>Select all the categories that apply. If none apply, choose the closest category.</p>
-        <%= f.input :crime, collection: [ "theft", "unwanted physical contact", "derogatory comments", "stalking", "threatening behavior", "sexual assault", "violent assault"], label: false, required: true, input_html: {class: "form-inputs"} %>
+        <%= f.input :crime, collection: [ "theft", "unwanted physical contact", "derogatory comments", "stalking", "threatening behavior", "sexual assault", "violent assault"], label: false, include_blank: false, input_html: {class: "form-inputs"} %>
       </div>
       <div class="custom-field">
         <h3>Additional description:</h3>

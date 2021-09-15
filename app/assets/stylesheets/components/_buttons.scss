@@ -69,6 +69,26 @@
   color: white;
 }
 
+.button-spinner {
+  font-size: 1.6rem;
+  color: white;
+  pointer-events: none;
+  animation: rotation infinite 2s linear;
+  transform-origin: center center;
+
+}
+
+//for spinning animation on loading button
+@keyframes rotation{
+  from{
+    transform:rotate(0deg);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
+}
+
 .button-ratings {
   height: 51px;
   width: 51px;
@@ -103,11 +123,5 @@
     font-size: 24px;
     margin-left: 10px;
     color: #495057;
-  }
-
-// for flag button
-.disabled {
-  pointer-events: none;
-  filter: grayscale(40%);
   }
 }
