@@ -105,8 +105,9 @@
     color: #495057;
   }
 
-// for flag button
-.disabled {
-  pointer-events: none;
-  filter: grayscale(40%);
+  // for flag button
+  .disabled {
+    pointer-events: none;
+    filter: grayscale(40%);
+  }
 }
