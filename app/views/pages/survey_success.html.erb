@@ -3,7 +3,15 @@
   <h2>Your response has been submitted!</h2>
   <p>Thank you for taking the time to complete the survey.
   Every response counts!</p>
+
   <%= link_to root_path do %>
-    <button class="button-blue">Go back home</button>
+    <button class="button-blue"> Go back home </button>
   <% end %>
+
+  <% if @journey %>
+    <%= link_to journey_incidents_path(@journey) do %>
+      <button class="button-blue success-incidents-button">Return to list of incidents </button>
+    <% end %>
+  <% end %>
+
 </div>

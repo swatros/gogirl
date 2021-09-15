@@ -1,5 +1,6 @@
 
 <div id="map" class = "h-100"
+  data-navigation-ui-target="map"
   data-map-target="map"
   data-origin = "<%= @origin.to_json %>"
   data-incidents = "<%= @incidents.to_json %>"
@@ -10,4 +11,8 @@
     data-map-target="summary">
     <%= render 'shared/navigation_summary' %>
   </div>
+</div>
+<div class = "navigation-directions-toggle-div"
+  data-action="click->navigation-ui#switch">
+  <%= render 'shared/directions_toggle' %>
 </div>

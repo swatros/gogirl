@@ -13,6 +13,12 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :contacts
 
+
   include Abyme::Model
   abymize :contacts
+
+  def full_name
+    first_name + " " + last_name
+  end
+
 end
