@@ -5,13 +5,17 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ['form', "container"];
+  static targets = ['form', "container", "map", "directions"];
 
   connect() {
     this.journeyId = this.containerTarget.dataset.journeyId
   }
 
-  flag() {
+  flag(event) {
+
+    const flagButton = event.currentTarget
+    flagButton.classList.add('disabled')
+
     this.getCurrentLocation(
       (response) => {
         console.log(response.coords.latitude)
@@ -31,12 +35,18 @@ export default class extends Controller {
         })
           .then(response => response.text())
           .then((data) => {
+            flagButton.classList.remove('disabled');
             document.querySelector('body').insertAdjacentHTML('beforeend', data);
           })
       }
     )
   }
 
+  switch() {
+    console.log("hello")
+    this.directionsTarget.classList.toggle("directions-hide")
+    this.directionsTarget.classList.toggle("directions-show")
+  }
 
   async getCurrentLocation(callback) {
     navigator.geolocation.getCurrentPosition(callback)

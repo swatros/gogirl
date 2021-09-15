@@ -3,6 +3,9 @@ class IncidentsController < ApplicationController
   def index
     @journey = Journey.find(params[:journey_id])
     @incidents = @journey.incidents
+    if @incidents.empty?
+      redirect_to root_path
+    end
   end
 
   def new
@@ -24,7 +27,7 @@ class IncidentsController < ApplicationController
 
     respond_to do |format|
       if @incident.save
-        format.html { redirect_to root_path } #change to redirect to survey
+        format.html { redirect_to incident_survey_success_path(@incident) } #change to redirect to survey
         format.text { render partial: 'shared/incident_flash', locals: { message: "Location and time saved. We'll ask for more info later." }, formats: [:html] }
       else
         format.html { redirect_to root_path } #change to redirect to same page with an error
@@ -42,10 +45,17 @@ class IncidentsController < ApplicationController
     @incident.update(incident_params)
 
     if @incident.save
-      redirect_to survey_success_path
+      redirect_to incident_survey_success_path(@incident)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @incident = Incident.find(params[:id])
+    @journey = @incident.journey
+    @incident.destroy
+    redirect_to journey_incidents_path(@journey)
   end
 
   private

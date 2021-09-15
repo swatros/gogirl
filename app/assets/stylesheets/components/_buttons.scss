@@ -10,7 +10,7 @@
 }
 
 .button-white {
-  color: #66717E;
+  color: #6c7ba5e6;
   font-weight: bold;
   width: 100%;
   background-color: white; /* Wild blue yonder */
@@ -28,7 +28,7 @@
   font-weight: bold;
   font-size: 24px;
   width: 100%;
-  background-color: #B44143; /* Wild blue yonder */
+  background-color: #29353D; /* Wild blue yonder */
   border-radius: 33px;
   padding:10px;
   border:0px;
@@ -56,9 +56,14 @@
   width: 50px;
 }
 
+// .button-msg {
+//   height: 55px;
+//   width: 55px;
+// }
+
 .button-msg {
-  height: 55px;
-  width: 55px;
+  font-size: 1.8rem;
+  color: white;
 }
 
 .button-ratings {
@@ -96,4 +101,9 @@
     margin-left: 10px;
     color: #495057;
   }
+
+// for flag button
+.disabled {
+  pointer-events: none;
+  filter: grayscale(40%);
 }

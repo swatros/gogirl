@@ -30,4 +30,9 @@ class PagesController < ApplicationController
   def survey
     @incident = Incident.last
   end
+
+  def survey_success
+    @incident = Incident.find(params[:incident_id])
+    @journey = @incident.journey
+  end
 end

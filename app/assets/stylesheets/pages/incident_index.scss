@@ -1,16 +1,20 @@
 
 .incidents-index-wrapper {
   width: 100vw;
-  height: 100vh;
-  padding: 20px;
+  min-height: 100vh;
+  padding: 24px;
   position: relative;
+  background-color: white;
+}
+
+.incidents-index-wrapper p {
+  font-size: 15px;
 }
 
 // title and description
 .incidents-index-wrapper h1 {
   font-size: 30px;
   color: #29353D;
-  padding-top: 13px;
 }
 
 .incidents-index-wrapper p {
@@ -29,10 +33,11 @@
 
 //incident card
 .incident-card {
+  margin-bottom: 20px;
   padding: 20px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 1px 1px 1px lightgray;
+  box-shadow: 0px 1px 1px lightgray;
   position: relative;
 }
 
@@ -41,6 +46,14 @@
   padding-bottom: 20px;
 }
 
+.incident-index-headers {
+  margin-bottom: 1rem;
+  margin-top: 2vh;
+}
+
+.incident-index-headers p {
+  margin-top: 0.5rem;
+}
 
 .index-card-title-and-flag .button-flag {
   height: 38px;
@@ -57,11 +70,27 @@
   padding-left: 10px;
 }
 
-.incident-index-edit-button {
+.incident-edit-button {
   position: absolute;
-  bottom: 8%;
-  right: 6%;
-  width: 85px;
-  height: 43px;
+  bottom: 10%;
+  right: 16%;
   font-size: 17px;
+}
+
+.incident-edit-button a {
+  color: #6c7ba5e6;
+  text-decoration: none;
+}
+
+// destroy button
+.incident-destroy-button {
+  position: absolute;
+  bottom: 10%;
+  right: 6%;
+  font-size: 17px;
+}
+
+.incident-destroy-button a {
+  color:#6c7ba5e6;
+  text-decoration: none;
 }

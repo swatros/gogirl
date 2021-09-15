@@ -4,6 +4,7 @@ import places from 'places.js';
 const initAutocomplete = () => {
   const addressInputStart = document.getElementById("home-input-start")
   const addressInputDestination = document.getElementById("home-input-destination")
+  const addressInputLocation = document.getElementById("survey-input-location")
 
   if (addressInputStart) {
     places({ container: addressInputStart });
@@ -11,6 +12,10 @@ const initAutocomplete = () => {
 
   if (addressInputDestination) {
     places({ container: addressInputDestination });
+  }
+
+  if (addressInputLocation) {
+    places({ container: addressInputLocation });
   }
 };
 
