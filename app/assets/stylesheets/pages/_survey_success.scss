@@ -1,25 +1,33 @@
 .survey-success {
   padding: 32px;
   color: #29353D;
+  background-color: white;
+  height: 100vh;
 }
 
 .survey-success h2 {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 23px;
   letter-spacing: -0.5px;
+  color: #29353D;
 }
 
 .survey-img {
-  width: 100%;
+  width: 76%;
   margin: 0 auto;
-  padding: 32px;
+  margin-left: 10%;
+  margin-bottom: 5%;
 }
 
 .survey-success p {
-  font-family: roboto, sans-serif;
-  color: #66717E;
+  color: #29353D;
+  font-size: 15px;
 }
 
 .success-incidents-button {
   margin-top: 17px;
+}
+
+.survey-success .button-blue {
+  height: 57px;
+  box-shadow: 1px 1px 2px #8495c7;
 }
