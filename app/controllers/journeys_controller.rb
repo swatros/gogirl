@@ -10,6 +10,7 @@ class JourneysController < ApplicationController
     @midpoint = Geocoder::Calculations.geographic_center([@origin, @destination])
     @incidents = Incident.near(@midpoint, @distance)
     @incidents_avoid = define_centers(@incidents)
+    @cluster_bojects = cluster_objects
     @incidents = @incidents.map do |incident|
       {
         lat: incident.latitude,
@@ -38,13 +39,17 @@ class JourneysController < ApplicationController
     return "bbox:#{top_left_lng},#{top_left_lat},#{bottom_right_lng},#{bottom_right_lat}"
   end
 
+  def cluster_objects
+    @cluster_objects ||= []
+  end
+
   def define_centers(incidents)
     incidents_copy = incidents.dup
     incident_clusters = []
     incidents_copy.each do |incident|
       next if incident_clusters.any? { |cluster| cluster.include? incident }
 
-      incident_group = Incident.near(incident, 0.3)
+      incident_group = Incident.near(incident, 0.5)
       incident_clusters.push(incident_group)
     end
 
@@ -58,12 +63,20 @@ class JourneysController < ApplicationController
   end
 
   def cluster_box(cluster)
-      center = Geocoder::Calculations.geographic_center(cluster)
-      radius = 0.002
-      top_left_lat = center.first + radius / 2
-      top_left_lng = center.last + radius * 2
-      bottom_right_lat = center.first - radius / 2
-      bottom_right_lng = center.last - radius * 2
-      "bbox:#{top_left_lng},#{top_left_lat},#{bottom_right_lng},#{bottom_right_lat}"
+    center = Geocoder::Calculations.geographic_center(cluster)
+    if Geocoder::Calculations.distance_between(@origin, center) <= 0.5 || Geocoder::Calculations.distance_between(@destination, center) <= 0.5
+      radius = 0.0015
+    else
+      radius = 0.003
+    end
+    top_left_lat = center.first + radius
+    top_left_lng = center.last + radius
+    bottom_right_lat = center.first - radius
+    bottom_right_lng = center.last - radius
+    # @cluster_objects.push({ tllng: top_left_lng,tllat: top_left_lat,brlng: bottom_right_lng,brlat: bottom_right_lat })
+    "bbox:#{top_left_lng},#{top_left_lat},#{bottom_right_lng},#{bottom_right_lat}"
   end
+
+
+
 end
