@@ -5,7 +5,7 @@
   width: 100%;
   background-color: #9AABD5; /* Wild blue yonder */
   border-radius: 33px;
-  padding:10px;
+  padding:2px;
   border:0px;
 }
 
@@ -75,6 +75,32 @@
   width: 50px;
   height: 50px;
 }
+
+.form-actions {
+  margin:auto auto;
+  margin-top: 2px;
+  margin-bottom: 20px;
+}
+
+.sign-up{
+  margin-left: 54px;
+
+  a {
+    text-decoration: none !important;
+  }
+}
+
+.nav-top {
+  padding: 10px;
+  position: relative;
+  .fas {
+    position: absolute;
+    left: 12px;
+    top:15px;
+    font-size: 34px;
+    margin-left: 10px;
+    color: #495057;
+  }
 
 // for flag button
 .disabled {
