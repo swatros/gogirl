@@ -1,3 +1,8 @@
+<div class = "nav-top">
+    <%= link_to root_path do %>
+      <i class="fas fa-chevron-circle-left"></i>
+    <% end %>
+</div>
 <div class="container mt-4">
 
   <h2 style="text-align: center;", class= mb-4>My profile</h2>
@@ -10,7 +15,6 @@
                     required: false ,
                     autofocus: true,
                     input_html: { autocomplete: "email", class: "log-input", placeholder: "Email" } %>
-
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
@@ -37,35 +41,27 @@
                     hint: "we need your current password to confirm your changes",
                     required: true,
                     input_html: { autocomplete: "current-password", class: "log-input", placeholder: "Current password" } %>
-
-        <% i = 0 %>
-        <%= f.simple_fields_for :contacts do |g| %>
-          <% i += 1 %>
-          <p style="text-align:center">Emergency contact <%= i %></p>
-            <%= g.input :first_name,
-                  label: false,
-                  input_html: { class: "log-input", placeholder: "First name" }
-            %>
-            <%= g.input :last_name,
-              label: false,
-              input_html: { class: "log-input", placeholder: "Last name" }
-            %>
-            <%= g.input :phone_number,
-              label: false,
-              input_html: { class: "log-input", placeholder: "Phone number" }
-            %>
+             </div>
+        <div class="contacts">
+          <%= f.abyme_for(:contacts, limit:3) do |abyme| %>
+            <%= abyme.records %>
+            <%= abyme.new_records %>
+            <%= add_associated_record(html: {class:"add-button"}) do %>
+                <span class="iconify button-add" data-icon="carbon:add-alt"></span>
+            <% end %>
           <% end %>
-      </div>
+        </div>
     </div>
 
-    <div class="form-actions button-blue col-4", style="text-align:center;margin:0 auto">
+    <div class="form-actions button-blue col-4 my-4 ", style="text-align:center;margin:0 auto">
       <%= f.button :submit, "Update" %>
     </div>
   <% end %>
 
-  <h3 class="mt-4">Cancel my account</h3>
-
   <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-  <%= link_to "Back", root_path %>
+</div>
+
+<div class="alert alert-info" style="display: none;">
+  Invalid phone number
 </div>

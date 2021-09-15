@@ -37,3 +37,12 @@
 .phone-input {
   height: 38px;
 }
+
+.add-contact{
+  display: flex;
+  flex-direction: column;
+  .fas{
+    font-size: 23px;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,24 @@
+<div class="phone-wrapper">
+  <div class="contact-title">
+    <p>Emergency Contact</p>
+    <%= remove_associated_record(tag: :div) do %>
+        <i class="fas fa-trash my-3"></i>
+      <% end %>
+  </div>
+  <%= f.input :first_name,
+              label: false,
+              input_html: { autocomplete: "first name", class: "log-input", placeholder: "First name" } %>
+  <%= f.input :last_name,
+              label: false,
+              input_html: { autocomplete: "last name", class: "log-input", placeholder: "Last name" }%>
+  <input class="phone-input log-input border-0" type="tel" name="phone" />
+  <div class="add-contact">
+    <%= f.input :phone_number,
+                required: true,
+                autofocus: true,
+                as: :hidden,
+                label: false,
+                input_html: { autocomplete: "phone number", class: "log-input phone-value", placeholder: "Phone number"} %>
+    <%= f.hidden_field :_destroy %>
+  </div>
+</div>

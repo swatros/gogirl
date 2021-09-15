@@ -9,9 +9,16 @@ class User < ApplicationRecord
   has_many :incidents, dependent: :nullify
   has_many :journeys, dependent: :nullify
 
+  has_one_attached :avatar
+
   accepts_nested_attributes_for :contacts
+
+
+  include Abyme::Model
+  abymize :contacts
 
   def full_name
     first_name + " " + last_name
   end
+
 end

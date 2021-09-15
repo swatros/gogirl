@@ -1,0 +1,43 @@
+.contacts {
+  .button-add {
+    font-size: 30px !important;
+    display:flex;
+    align-items: center;
+  }
+}
+
+.add-button{
+  background: none;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  color: #9AABD5;
+}
+
+.contact-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  .fas{
+    position: absolute;
+    top: -16px;
+    right:17px
+  }
+}
+
+.sign-up-img{
+  position:absolute;
+  bottom: 0%;
+  right: 0%;
+  object-fit: cover;
+  height: 46vh;
+  img {
+    height: 100%;
+  }
+}
+
+.back {
+  background-color: white !important;
+  height: 100vh;
+}

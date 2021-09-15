@@ -7,6 +7,9 @@
   border-radius: 33px;
   padding:2px;
   border:0px;
+  input {
+    color:white;
+  }
 }
 
 .button-white {
@@ -83,10 +86,10 @@
 }
 
 .sign-up{
-  margin-left: 54px;
-
   a {
     text-decoration: none !important;
+    font-size: 14px;
+    color:#CBCECA;
   }
 }
 
@@ -97,7 +100,7 @@
     position: absolute;
     left: 12px;
     top:15px;
-    font-size: 34px;
+    font-size: 24px;
     margin-left: 10px;
     color: #495057;
   }
