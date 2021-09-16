@@ -78,6 +78,35 @@
       }
   }
 
+  //test directions button to be turned into back button
+
+   .test-nav-button-div {
+    position: absolute;
+    left: 8%;
+    top: 4%;
+  }
+
+  .test-nav-button-div .fa-chevron-left {
+    position: relative;
+    z-index: 7;
+    color: white;
+    border-radius: 50%;
+    font-size: 5vw;
+
+    &::after {
+      position: absolute;
+      z-index: -1;
+      left: -96.5%;
+      top: -61.5%;
+      content: "";
+      height: 2em;
+      width: 2em;
+      background-color: #29353D;
+      border-radius: 50%;
+      }
+  }
+
+
   // summary
   .nav-summary-div {
     display: flex;
@@ -161,8 +190,9 @@
   .nav-right-icons-list .icon-navy-circle {
     position: relative;
     z-index: 10;
-    margin-top: 0.8rem;
-    margin-bottom: 0.6rem;
+    // margin-top: 0.8rem;
+    // margin-bottom: 0.6rem;
+    margin-top: 0.5rem;
     background-color: #29353D;
     height: 53px;
     width: 53px;
