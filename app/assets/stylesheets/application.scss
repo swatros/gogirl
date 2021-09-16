@@ -11,3 +11,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import 'intl-tel-input/build/css/intlTelInput.css';
+
+
+.iti__flag {background-image: image-url("flags.png");}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .iti__flag {background-image: image-url("flags@2x.png");}
+}
