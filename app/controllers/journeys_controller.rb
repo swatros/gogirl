@@ -41,6 +41,12 @@ class JourneysController < ApplicationController
     )
   end
 
+  def finish
+    @journey = Journey.find(params[:id])
+    @journey.share_location("#{@journey.user.full_name} has arrived safely at their destination!")
+    redirect_to journey_incidents_path(@journey)
+  end
+
   private
 
   def solo_box(incident)

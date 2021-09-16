@@ -1,17 +1,20 @@
 <div class="map-wrapper" data-navigation-ui-target="container" data-controller="navigation-ui" data-journey-id="<%= @journey.id %>">
-  <div class = "navigation-back-buttons-div">
-    <%= render 'shared/navigation_back_button' %>
-  </div>
   <% if signed_in? && @journey.user == current_user %>
-  <div class = "navigation-right-buttons-div">
-    <%= render 'shared/navigation_right_buttons' %>
-  </div>
+    <div class = "navigation-back-buttons-div">
+      <%= render 'shared/navigation_back_button' %>
+    </div>
+    <div class = "navigation-right-buttons-div">
+      <%= render 'shared/navigation_right_buttons' %>
+    </div>
+    <%= render 'shared/navigation_bottom_menu' %>
+    <div class = "navigation-pane-div">
+      <%= render 'shared/navigation_pane' %>
+    </div>
+  <% else %>
+    <div class="navigation-pane h-100" data-controller="map">
+      <%= render 'shared/map' %>
+    </div>
   <% end %>
-
-  <div class = "navigation-pane-div">
-    <%= render 'shared/navigation_pane' %>
-  </div>
-  <%= render 'shared/navigation_bottom_menu' %>
 </div>
 
 <div class="modal fade" id="emergencyModal" tabindex="-1" role="dialog" aria-labelledby="emergencyModalLabel" aria-hidden="true">
