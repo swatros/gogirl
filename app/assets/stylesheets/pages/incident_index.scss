@@ -104,3 +104,25 @@
   bottom: 25px;
   width: 88%;
 }
+
+//reminder
+
+.incident-reminder-green {
+  font-weight: bold;
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 63px;
+  display: flex;
+  align-items: center;
+}
+
+.incident-reminder-green p {
+  color: #8495c7;
+}
+
+// .incident-reminder-green .fa-check-circle {
+//   color: #8495c7;
+//   position: absolute;
+//   right: 31%;
+//   top: 82%;
+// }

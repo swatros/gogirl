@@ -16,6 +16,9 @@ class IncidentsController < ApplicationController
     @journey = Journey.find_by(id: params[:journey_id])
     @incident = Incident.new(incident_params)
 
+    return if validating_location
+    return if validating_crime
+
     if @journey
       @incident.date = Date.today
       @incident.latitude = @journey.current_location["latitude"]
@@ -32,7 +35,7 @@ class IncidentsController < ApplicationController
         format.html { redirect_to incident_survey_success_path(@incident) } #change to redirect to survey
         format.text { render partial: 'shared/incident_flash', locals: { message: "Location and time saved. We'll ask for more info later." }, formats: [:html] }
       else
-        format.html { redirect_to root_path } #change to redirect to same page with an error
+        format.html { render :new } #change to redirect to same page with an error
         format.text { head 422 }
       end
     end
@@ -44,7 +47,10 @@ class IncidentsController < ApplicationController
 
   def update
     @incident = Incident.find(params[:id])
+    return if validating_update_crime
+
     @incident.update(incident_params)
+
 
     if @incident.save
       redirect_to incident_survey_success_path(@incident)
@@ -61,6 +67,33 @@ class IncidentsController < ApplicationController
   end
 
   private
+
+  def validating_location
+    if params[:incident][:location_needs_validation] == "true" && !@incident.location.present?
+      @incident.errors.add(:location, "Location must be present.")
+      render :new
+      return true
+    end
+    return false
+  end
+
+  def validating_update_crime
+    if params[:incident][:crime_needs_validation] == "true" && !Incident::CRIME_TYPES.include?(params[:incident][:crime])
+      @incident.errors.add(:crime, "must be included in the list.")
+      render :edit
+      return true
+    end
+    return false
+  end
+
+  def validating_crime
+    if params[:incident][:crime_needs_validation] == "true" && !Incident::CRIME_TYPES.include?(@incident.crime)
+      @incident.errors.add(:crime, "must be included in the list.")
+      render :new
+      return true
+    end
+    return false
+  end
 
   def incident_params
     params.require(:incident).permit(:date, :time, :latitude, :longitude, :location, :crime, :description)
