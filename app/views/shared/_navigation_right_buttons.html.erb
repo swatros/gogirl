@@ -5,6 +5,10 @@
   <%# New message%>
     <li data-action="click->messaging#send"><i class="fas fa-comment-dots button-msg icon-navy-circle"></i></li>
   <%# Flag %>
-    <li class = "icon-white-circle"><span id = "flag-nav-button" class="iconify button-flag icon-backg" data-icon="el:flag-alt" style="color: #29353D;" data-action="click->navigation-ui#flag"></span></li>
+  <li class = "icon-white-circle">
+    <span id = "flag-nav-button" class="iconify button-flag icon-backg" data-icon="el:flag-alt" style="color: #29353D;" data-action="click->navigation-ui#flag"></span>
+  </li>
+
+   <li class="icon-navy-circle d-none" data-navigation-ui-target = "spinnerButton"><i class="fas fa-spinner button-spinner" ></i></li>
   </ul>
 </div>

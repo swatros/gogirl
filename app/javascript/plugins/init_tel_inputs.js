@@ -7,7 +7,6 @@ const initTelInputs = () => {
   })
 
   const contactsContainer = document.getElementById('abyme--contacts');
-
   if (contactsContainer) {
     contactsContainer.addEventListener('abyme:after-add', () => {
       const allWrappers = document.querySelectorAll('.phone-wrapper')
@@ -17,7 +16,6 @@ const initTelInputs = () => {
       alert('You reached the max number of contacts !')
     });
   }
-
 }
 
 const initInput = (wrapper) => {

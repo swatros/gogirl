@@ -3,6 +3,8 @@ class Journey < ApplicationRecord
 
   belongs_to :user, optional: true
   has_many :incidents
+  validates :origin_address, presence: true
+  validates :destination_address, presence: true
 
   def share_location(message = "#{user&.full_name} is walking and wants to share her/his live location with you:")
     return if self.id.nil?

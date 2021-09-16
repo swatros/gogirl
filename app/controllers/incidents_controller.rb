@@ -18,9 +18,9 @@ class IncidentsController < ApplicationController
 
     if @journey
       @incident.date = Date.today
-      @incident.time = Time.now
       @incident.latitude = @journey.current_location["latitude"]
       @incident.longitude = @journey.current_location["longitude"]
+      @incident.time = DateTime.now.to_s(:time)
       @incident.journey = @journey
       @incident.user = @journey.user
     else
