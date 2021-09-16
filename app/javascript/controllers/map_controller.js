@@ -174,18 +174,18 @@ export default class extends Controller {
 
 
 
-        boxes.forEach((box) => {
-          var boundingBox = new H.geo.Rect(box.tllat, box.tllng, box.brlat, box.brlng);
-          map.addObject(
-            new H.map.Rect(boundingBox, {
-              style: {
-              fillColor: 'transparent',
-              strokeColor: 'red',
-              lineWidth: 8
-                }
-              })
-            );
-          })
+        // boxes.forEach((box) => {
+        //   var boundingBox = new H.geo.Rect(box.tllat, box.tllng, box.brlat, box.brlng);
+        //   map.addObject(
+        //     new H.map.Rect(boundingBox, {
+        //       style: {
+        //       fillColor: 'transparent',
+        //       strokeColor: 'red',
+        //       lineWidth: 8
+        //         }
+        //       })
+        //     );
+        //   })
       }
 
       addMarkersToMap(this.map, this.incidents, this.avoidObjects);
