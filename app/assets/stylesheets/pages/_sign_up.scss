@@ -37,7 +37,24 @@
   }
 }
 
+.forgot-password-img{
+  text-align:center;
+  margin-top: 15px;
+  height: 47vh;
+  img {
+    height: 100%;
+  }
+}
+
 .back {
   background-color: white !important;
   height: 100vh;
+}
+
+h2 {
+  color: #29353D;
+}
+
+p{
+  color: #29353D;
 }
