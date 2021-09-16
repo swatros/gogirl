@@ -2,6 +2,8 @@
 <div id="map" class = "h-100"
   data-navigation-ui-target="map"
   data-map-target="map"
+  data-journey-id="<%= @journey.id %>"
+  data-is-owner="<%= user_signed_in? && current_user == @journey.user %>"
   data-origin = "<%= @origin.to_json %>"
   data-incidents = "<%= @incidents.to_json %>"
   data-avoid = "<%= @incidents_avoid %>"
