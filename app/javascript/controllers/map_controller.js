@@ -2,7 +2,7 @@ import H from "@here/maps-api-for-javascript";
 import { map } from "jquery";
 import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
-import consumer from "../channels/consumer";
+import { initJourneyChannel } from "../channels/journey_channel";
 
 export default class extends Controller {
 
@@ -110,7 +110,6 @@ export default class extends Controller {
       var destinationIcon = new H.map.Icon('https://img.icons8.com/external-those-icons-fill-those-icons/48/000000/external-pin-maps-and-locations-those-icons-fill-those-icons.png', { size: { w: 40, h: 40 } });
       var originIcon = new H.map.Icon('https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-map-pin-basic-ui-elements-flatart-icons-outline-flatarticons.png', { size: { w: 40, h: 40 } });
       var flagIcon = new H.map.Icon('https://img.icons8.com/color/30/000000/high-importance--v1.png', { size: { w: 20, h: 20 } });
-      var userIcon = new H.map.Icon('https://img.icons8.com/ios-filled/50/000000/user-female-circle.png', { size: { w: 25, h: 25 } })
 
 
       function addMarkersToMap(map, incidents, boxes) {
@@ -173,25 +172,12 @@ export default class extends Controller {
 
       // ADD CONTINUOUS USER LOCATION TO MAP AS ICON
 
-    const showPosition = (coords) => {
-      if (this.userMarker) {
-        this.userMarker.setGeometry({ lat: coords.latitude, lng: coords.longitude })
-      } else {
-        this.userMarker = new H.map.Marker({
-          lat: coords.latitude,
-          lng: coords.longitude
-        },
-          {
-            icon: userIcon
-          })
-        this.map.addObject(this.userMarker)
-      }
-    }
+
 
     if (this.isOwner) {
       navigator.geolocation.watchPosition((position) => {
         this.broadcastLocation(position.coords)
-        showPosition(position.coords)
+        this.showPosition(position.coords)
       });
     } else {
       this.initSubscription()
@@ -204,6 +190,23 @@ export default class extends Controller {
       });
 
     });
+  }
+
+  showPosition(coords) {
+
+    if (this.userMarker) {
+      this.userMarker.setGeometry({ lat: coords.latitude, lng: coords.longitude })
+    } else {
+      var userIcon = new H.map.Icon('https://img.icons8.com/ios-filled/50/000000/user-female-circle.png', { size: { w: 25, h: 25 } })
+      this.userMarker = new H.map.Marker({
+        lat: coords.latitude,
+        lng: coords.longitude
+      },
+        {
+          icon: userIcon
+        })
+      this.map.addObject(this.userMarker)
+    }
   }
 
   addManueversToPanel(route, container) {
@@ -246,10 +249,8 @@ export default class extends Controller {
   }
 
   initSubscription() {
-    consumer.subscriptions.create({ channel: "JourneyChannel", id: this.mapTarget.dataset.journeyId }, {
-      received(data) {
-        console.log(data)
-      }
-    });
+    initJourneyChannel(this.mapTarget.dataset.journeyId, (data) => {
+      this.showPosition(data)
+    })
   }
 }

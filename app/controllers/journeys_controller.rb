@@ -31,12 +31,13 @@ class JourneysController < ApplicationController
 
   def broadcast
     @journey = Journey.find(params[:id])
+    @journey.update(current_location: {
+      latitude: params[:latitude],
+      longitude: params[:longitude]
+    })
     JourneyChannel.broadcast_to(
       @journey,
-      {
-        latitude: params[:latitude],
-        longitude: params[:longitude]
-      }
+      @journey.current_location
     )
   end
 
