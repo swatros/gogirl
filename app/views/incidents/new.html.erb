@@ -1,7 +1,7 @@
 <div class="survey-container">
   <div class="head-message">
     <div class="title-exitbtn">
-      <h1>How was your trip?</h1>
+      <h1>Tell us what happened</h1>
       <%= link_to root_path do %>
       <i class="fas fa-times-circle" style="font-size: 25px; margin-bottom: 8px;"></i>
       <% end %>
@@ -28,12 +28,12 @@
       </div>
       <div class="custom-field">
         <h3>What was the nature of the incident?</h3>
-        <p>Select all the categories that apply. If none apply, choose the closest category.</p>
+        <p>Select the category that most closely matches the incident. If multiple categories apply, select the one that you feel was the most serious. </p>
         <%= f.input :crime, collection: Incident::CRIME_TYPES, label: false, include_blank: "Select crime type", input_html: {class: "form-inputs"} %>
       </div>
       <div class="custom-field">
         <h3>Additional description:</h3>
-        <p>If you have any other information that you want to share, please feel free to write it here. Ie, what did the person look like?  </p>
+        <p>If you have any other information that you want to share, please feel free to write it here (ie., what did the person look like?)</p>
         <%= f.input :description, as: :text, input_html: {rows: 5, class: "form-inputs"}, label: false %>
       </div>
       <%= f.submit 'Submit my survey response', class: "custom-submit" %>
