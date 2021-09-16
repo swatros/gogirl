@@ -64,7 +64,7 @@ class JourneysController < ApplicationController
       incident_clusters.push(incident_group)
     end
 
-    # incident_clusters.select! { |k| k.to_a.count > 4 }
+    incident_clusters.select! { |k| k.to_a.count > 4 }
     incident_clusters = incident_clusters.sort_by(&:size).last(20)
     combine_clusters(incident_clusters)
   end
@@ -94,7 +94,7 @@ class JourneysController < ApplicationController
     nw_point = [max_lat, min_lng]
     se_point = [min_lat, max_lng]
     max_distance = [Geocoder::Calculations.distance_between(nw_point, center), Geocoder::Calculations.distance_between(se_point, center)].max
-    [max_distance * 0.01, 0.0015].max
+    [max_distance * 0.007, 0.0015].max
   end
 
   def pass_through(origin, destination, center)
