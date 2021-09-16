@@ -6,7 +6,7 @@ class Journey < ApplicationRecord
   validates :origin_address, presence: true
   validates :destination_address, presence: true
 
-  def share_location(message = "#{user&.full_name} is walking and wants to share her/his live location with you:")
+  def share_location(message = "#{user&.full_name} is walking and wants to share their live location with you:")
     return if self.id.nil?
 
     account_sid = 'ACaefaa407a07dd563fa2d0f3abcb38c3f'
@@ -20,13 +20,13 @@ class Journey < ApplicationRecord
 
     message_body = "#{message} #{base_url + Rails.application.routes.url_helpers.journey_path(self)}"
 
-    # user.contacts.each do |contact|
-      #client.messages.create(
-      #                           body: message_body,
-        #                          messaging_service_sid: 'MGc8e82bd2375ee0b98bdf078c9a5004af',
-        #                         to: "#{contact.phone_number}"
-          #                        )
-    # end
+    user.contacts.each do |contact|
+      client.messages.create(
+                                body: message_body,
+                                 messaging_service_sid: 'MGc8e82bd2375ee0b98bdf078c9a5004af',
+                                to: "#{contact.phone_number}"
+                                 )
+    end
 
     puts "😂 #{message_body} 😂"
   end

@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   def create
     if params[:journey]
       @journey = Journey.find(params[:journey])
-      @journey.share_location
+      @journey.share_location("#{@journey.user.full_name} is feeling uncomfortable on their journey. Check their current live location here: ")
     end
 
     if params[:journey]
