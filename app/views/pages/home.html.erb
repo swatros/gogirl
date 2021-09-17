@@ -17,7 +17,7 @@
     <%= simple_form_for Journey.new do |f| %>
         <input name="origin" class="home-input-location" id = "home-input-start" placeholder= "Start location">
         <input name="destination" class="home-input-location" id = "home-input-destination" placeholder= "Destination" >
-        <%= f.input :share_location, as: :boolean %>
+        <%= f.input :share_location, as: :boolean, label: "Share location with contacts", input_html: {class: "d-none location-box"}, label_html: {class: "location-toggle"}%>
         <button type="submit" class="button-blue"> GO GIRL </button>
     <% end %>
   </div>
