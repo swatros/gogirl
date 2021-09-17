@@ -2,7 +2,7 @@
   <div class = "nav-bottom-buttons-div">
     <% if signed_in? && @journey.user == current_user %>
       <%= link_to finish_journey_path(@journey) do %>
-        <button class="button-white">I'm home</button>
+        <button class="button-white">I'm here</button>
       <% end %>
       <button type="button" class="button-sos" data-toggle="modal" data-target="#policeModal" data-controller="emergency" data-emergency-target="button">SOS</button>
     <% else %>

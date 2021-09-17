@@ -4,7 +4,7 @@ class Incident < ApplicationRecord
   # validates :location, presence: true, if: -> {location_needs_validation}
 
 
-  CRIME_TYPES = ["Unwanted physical contact", "Stalking", "Sexual assault", "Theft", "Derogatory comments", "Violent assault", "Threatening behavior", "Other"]
+  CRIME_TYPES = ["Derogatory comments", "Theft", "Stalking/following", "Verbally threatening behavior", "Unwanted physical contact", "Sexual assault", "Violent (nonsexual) assault", "Other"]
   belongs_to :user, optional: true
   belongs_to :journey, optional: true
   geocoded_by :location
