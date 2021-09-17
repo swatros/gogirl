@@ -60,7 +60,8 @@
 .location-box + label {
   position: relative;
   display: inline-block;
-  padding-left: 40px;
+  padding-left: 43px;
+  color: #29353D;
 }
 
 .location-box + label::before {
@@ -70,7 +71,7 @@
   cursor: pointer;
   width: 36px;
   height: 20px;
-  top: 0;
+  top: 15%;
   left: 0;
   background-color:lightgray;
   border-radius: 50rem;
@@ -88,8 +89,8 @@
   cursor: pointer;
   width: 16px;
   height: 16px;
-  top: 2px;
-  left: 2px;
+  top: 23%;
+  left: 1%;
   background-color: #29353D;
   border-radius: 50%;
   transition: left 0.2s ease;
