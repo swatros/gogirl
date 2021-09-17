@@ -2,21 +2,18 @@
 import places from 'places.js';
 
 const initAutocomplete = () => {
-  const addressInputStart = document.getElementById("home-input-start")
-  const addressInputDestination = document.getElementById("home-input-destination")
-  const addressInputLocation = document.getElementById("survey-input-location")
-
-  if (addressInputStart) {
-    places({ container: addressInputStart });
-  }
-
-  if (addressInputDestination) {
-    places({ container: addressInputDestination });
-  }
-
-  if (addressInputLocation) {
-    places({ container: addressInputLocation });
-  }
+  ["survey-input-location", "home-input-destination", "home-input-start"].forEach((inputId) => initInput(inputId))
 };
+
+const initInput = (inputId) => {
+  const input = document.getElementById(inputId)
+  if (input) {
+    places({
+      container: input,
+      appId: "plB06SJO2G6N",
+      apiKey: 'e012510420a0d470f237661bc2a17af4'
+    })
+  }
+}
 
 export { initAutocomplete };

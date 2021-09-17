@@ -1,0 +1,37 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  left: 7%;
+  top: 4%;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #29353D;
+  margin: 0%;
+}
+
+.logo-container img {
+  height: 30px;
+}
+
+
+.brand-logo {
+    background-color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+    margin-right: 8px;
+
+    img {
+      display: block;
+      object-fit: contain;
+      height: 90%;
+      margin: 0 auto;
+      margin-top: 1px;
+    }
+}

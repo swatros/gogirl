@@ -1,4 +1,6 @@
 <div class = "wrapper-home">
+  <%= render 'shared/logo' %>
+
   <% if user_signed_in? %>
     <% if current_user.avatar.attached? %>
       <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle avatar-home", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -12,9 +14,10 @@
   <% end %>
   <%# Autocomplete input forms and button %>
   <div class="home-div-inputs">
-    <%= simple_form_for Journey.new do %>
+    <%= simple_form_for Journey.new do |f| %>
         <input name="origin" class="home-input-location" id = "home-input-start" placeholder= "Start location">
         <input name="destination" class="home-input-location" id = "home-input-destination" placeholder= "Destination" >
+        <%= f.input :share_location, as: :boolean, label: "Share location with contacts", input_html: {class: "d-none location-box"}, label_html: {class: "location-toggle"}%>
         <button type="submit" class="button-blue"> GO GIRL </button>
     <% end %>
   </div>

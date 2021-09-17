@@ -23,7 +23,28 @@ class JourneysController < ApplicationController
 
   def create
     @journey = Journey.create(user: current_user, origin_address: params[:origin], destination_address: params[:destination])
+    if params[:journey][:share_location] == "1"
+      @journey.share_location
+    end
     redirect_to journey_path(@journey)
+  end
+
+  def broadcast
+    @journey = Journey.find(params[:id])
+    @journey.update(current_location: {
+      latitude: params[:latitude],
+      longitude: params[:longitude]
+    })
+    JourneyChannel.broadcast_to(
+      @journey,
+      @journey.current_location
+    )
+  end
+
+  def finish
+    @journey = Journey.find(params[:id])
+    @journey.share_location("#{@journey.user.full_name} has arrived safely at their destination!")
+    redirect_to journey_incidents_path(@journey)
   end
 
   private
@@ -49,7 +70,7 @@ class JourneysController < ApplicationController
       incident_clusters.push(incident_group)
     end
 
-    # incident_clusters.select! { |k| k.to_a.count > 4 }
+    incident_clusters.select! { |k| k.to_a.count > 4 }
     incident_clusters = incident_clusters.sort_by(&:size).last(20)
     combine_clusters(incident_clusters)
   end
@@ -79,7 +100,7 @@ class JourneysController < ApplicationController
     nw_point = [max_lat, min_lng]
     se_point = [min_lat, max_lng]
     max_distance = [Geocoder::Calculations.distance_between(nw_point, center), Geocoder::Calculations.distance_between(se_point, center)].max
-    [max_distance * 0.01, 0.0015].max
+    [max_distance * 0.007, 0.0015].max
   end
 
   def pass_through(origin, destination, center)

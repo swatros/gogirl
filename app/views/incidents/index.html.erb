@@ -40,7 +40,20 @@
         <% end %>
       </div>
 
+      <%# Reminder  %>
+      <% if incident.description.present? %>
+        <div class = "incident-reminder-green">
+          <p> You've already added a description to this incident. </p>
+          <%# <i class="far fa-check-circle"></i> %>
+        </div>
+      <% end %>
+
     </div>
   <% end %>
 
+    <%= link_to root_path do %>
+    <div class = 'incident-index-done-button'>
+       <button class="button-blue done-index-button">I'm done, take me back home</button>
+    </div>
+  <% end %>
 </div>

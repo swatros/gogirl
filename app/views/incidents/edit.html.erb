@@ -1,21 +1,24 @@
 <div class="survey-container">
   <div class="head-message">
     <div class="title-exitbtn">
-      <h1>How was your trip?</h1>
+      <h1>Tell us what happened</h1>
+      <%= link_to root_path do %>
       <i class="fas fa-times-circle" style="font-size: 25px; margin-bottom: 8px;"></i>
+      <% end %>
     </div>
     <p>If you feel comfortable, please complete this optional survey to help us get other users home safely. <br>Your data will be collected anonymously, but it will be displayed on the map so other users know which areas to avoid.</p>
   </div>
   <%= simple_form_for @incident do |f| %>
+   <%= f.hidden_field :crime_needs_validation, value: true %>
     <div class="survey-form">
       <div class="custom-field">
         <h3>What was the nature of the incident?</h3>
-        <p>Select all the categories that apply. If none apply, choose the closest category.</p>
-        <%= f.input :crime, collection: [ "theft", "unwanted physical contact", "derogatory comments", "stalking", "threatening behavior", "sexual assault", "violent assault"], label: false, include_blank: false, input_html: {class: "form-inputs"} %>
+        <p>Select the category that most closely matches the incident. If multiple categories apply, select the one that you feel was the most serious. </p>
+        <%= f.input :crime, collection: Incident::CRIME_TYPES, label: false, include_blank: "Select crime type", input_html: {class: "form-inputs"} %>
       </div>
       <div class="custom-field">
         <h3>Additional description</h3>
-        <p>If you have any other information that you want to share, please feel free to write it here. Ie, what did the person look like?  </p>
+        <p>If you have any other information that you want to share, please feel free to write it here (ie., what did the person look like?)</p>
         <%= f.input :description, as: :text, input_html: {rows: 5, class: "form-inputs"}, label: false %>
       </div>
       <%= f.submit 'Submit my survey response', class: "custom-submit" %>

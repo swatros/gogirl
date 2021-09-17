@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   end
 
   resources :journeys, only:[:create, :show] do
+    member do
+      post :broadcast
+      get :finish
+    end
     resources :incidents, only: [:index, :edit, :update]
   end
 

@@ -25,6 +25,8 @@ require("channels")
 // External imports
 import "bootstrap";
 import Iconify from '@iconify/iconify';
+import 'intl-tel-input/build/css/intlTelInput.css';
+
 import { initAutocomplete } from '../plugins/init_autocomplete'
 import { initTelInputs } from '../plugins/init_tel_inputs'
 // Internal imports, e.g:

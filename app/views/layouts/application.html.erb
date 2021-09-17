@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gogirl</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+
+    <title><%= DEFAULT_META["meta_title"] %></title>
+    <meta name="description" content="<%= DEFAULT_META["meta_description"] %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= DEFAULT_META["meta_title"] %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= image_url(DEFAULT_META["meta_image"]) %>" />
+    <meta property="og:description" content="<%= DEFAULT_META["meta_description"] %>" />
+    <meta property="og:site_name" content="<%= DEFAULT_META["meta_title"] %>" />
+
+    <%= favicon_link_tag %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
