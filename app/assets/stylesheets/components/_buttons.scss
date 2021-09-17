@@ -10,6 +10,9 @@
   input {
     color:white;
   }
+  &:active {
+    color: white;
+  }
 }
 
 .button-white {
@@ -35,6 +38,9 @@
   border-radius: 33px;
   padding:10px;
   border:0px;
+  a:hover {
+    color: gray !important;
+  }
 }
 
 .button-im-home {
@@ -109,7 +115,7 @@
   a {
     text-decoration: none !important;
     font-size: 14px;
-    color:#CBCECA;
+    color:gray;
   }
 }
 
@@ -131,5 +137,17 @@
     font-size: 24px;
     margin-left: 10px;
     color: #495057;
+  }
+}
+
+.button-contacts {
+  color: rgb(41, 53, 61);
+  font-size: 24px;
+  width: 100%; /* Wild blue yonder */
+  border-radius: 33px;
+  padding:10px;
+  border:1px solid rgb(41, 53, 61);
+  .a:hover {
+    color: gray !important;
   }
 }
