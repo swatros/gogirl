@@ -27,7 +27,7 @@
 }
 
 .button-sos {
-  color: white;
+  color: white !important;
   font-weight: bold;
   font-size: 24px;
   width: 100%;
@@ -35,7 +35,9 @@
   border-radius: 33px;
   padding:10px;
   border:0px;
+  text-decoration: none !important;
 }
+
 
 .button-im-home {
   color: #29353D; /* Gunmetal gray */
