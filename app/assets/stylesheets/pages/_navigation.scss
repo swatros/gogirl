@@ -304,3 +304,24 @@
     opacity: 90%;
     color: #29353D;
   }
+
+// Emergency contacts modal
+
+
+.title {
+  color: rgb(41, 53, 61);
+  margin-top: 50px;
+  ;
+  position: relative;
+  .modal-title {
+    font-weight: bold;
+    text-align: center;
+  }
+  .close {
+    margin-right: 20px;
+    position: absolute;
+    right:-6%;
+    top:-37%;
+    font-size: 32px;
+  }
+}
